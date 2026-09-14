@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1758e8">
+<meta name="description" content="Rental OS 是面向租赁企业的 SaaS 管理系统，连接订单、库存、计费与客户。预约系统演示，咨询订阅方案。">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rental OS">
+<meta property="og:title" content="Rental OS — 面向租赁企业的 SaaS 管理系统">
+<meta property="og:description" content="连接订单、库存、计费与客户，让租赁企业用一套系统协同日常运营。">
+<title>Rental OS — 面向租赁企业的 SaaS 管理系统</title>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./style.css">
+<link rel="preload" as="image" href="./images/hero-camera.png">
+<script src="./site-config.js" defer></script>
+<script src="./script.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+<noscript><div class="noscript-banner">请启用 JavaScript 以查看完整的产品演示与行业场景。</div></noscript>
+<header class="header">
+<div class="nav-inner">
+<a class="logo " href="#home" aria-label="Rental OS 首页">
+<img alt="" width="34" height="34" src="./favicon.svg">
+<span>Rental <b>OS</b>
+</span>
+</a>
+<nav aria-label="主导航" class="nav-links" id="nav-links">
+<a href="#product">产品功能</a>
+<a href="#industries">适用行业</a>
+<a href="#plans">订阅咨询</a>
+<a href="#faq">常见问题</a>
+</nav>
+<div class="nav-actions">
+<!-- 配置了管理端地址时，构建期替换为外链；未配置则点击弹出说明，官网不收集账号密码。 -->
+<button type="button" class="login-link" data-login>管理端登录 <svg class="icon login-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M14 4h6v6"></path><path d="m20 4-9 9"></path><path d="M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5"></path>
+</svg>
+</button>
+<button type="button" class="button primary nav-demo" data-demo>预约演示 <svg class="icon " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M4 12h15m-6-6 6 6-6 6">
+</path>
+</svg>
+</button>
+<button type="button" class="menu-toggle" id="menu-toggle" aria-label="打开导航" aria-expanded="false">
+<span class="menu-icon">
+<svg class="icon " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M4 6h16M4 12h16M4 18h16">
+</path>
+</svg>
+</span>
+</button>
+</div>
+</div>
+</header>
+<main id="main">
+<section id="home" class="hero">
+<img class="hero-image" alt="明亮的器材租赁工作室内，相机、镜头与收纳箱整齐放置" fetchpriority="high" width="1672" height="941" src="./images/hero-camera.png">
+<div class="hero-shade">
+</div>
+<div class="hero-inner">
+<div class="eyebrow hero-enter">
+<span class="blue-dash">
+</span> 面向租赁企业的 SaaS 管理系统</div>
+<h1 class="hero-enter">Rental <span>OS</span>
+</h1>
+<h2 class="hero-enter">租赁业务管理，<br>一套系统协同。</h2>
+<p class="hero-enter">为租赁公司连接订单、库存、计费与客户。<br>从日常运营到团队协作，用系统管理每个环节。</p>
+<div class="hero-buttons hero-enter">
+<button type="button" class="button primary" data-demo>预约系统演示 <svg class="icon " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M4 12h15m-6-6 6 6-6 6">
+</path>
+</svg>
+</button>
+<a class="button glass" href="#product">
+<svg class="icon " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="m9 5 10 7-10 7Z">
+</path>
+</svg> 了解系统功能</a>
+</div>
+<div class="hero-note hero-enter">
+<span class="status-dot">
+</span> 首批摄影租赁业务演练中</div>
+</div>
+<div class="hero-caption">RENTAL BUSINESS SOFTWARE <span>软件服务 · 面向租赁企业</span>
+</div>
+</section>
+<div class="industry-strip">
+<div class="strip-inner" id="industry-strip">
+<p>不同的租赁业务<br>
+<strong>同样清晰的管理</strong>
+</p>
+<!-- 行业条按钮由 script.js 按数据渲染，避免文案与下方行业区两处各写一遍。 -->
+</div>
+</div>
+<section id="product" class="section product-section">
+<div class="section-heading reveal">
+<div>
+<div class="eyebrow">01 — CONNECT YOUR WORKFLOW</div>
+<h2>不止接到订单。<br>
+<span class="muted">更要把每一单做好。</span>
+</h2>
+</div>
+<p>订单、商品和费用不再各管一段。<br>让每个环节，都接得上下一步。</p>
+</div>
+<div class="workflow-tabs reveal visible" role="tablist" aria-label="租赁流程演示" id="flow-tabs">
+</div>
+<div class="product-display reveal visible" id="flow-panel" role="tabpanel" aria-labelledby="flow-tab-0">
+<div class="product-story" id="flow-story">
+</div>
+<div class="app-window">
+<div class="window-top">
+<span class="window-dots">
+<i>
+</i>
+<i>
+</i>
+<i>
+</i>
+</span>
+<span data-industry-window-title>Rental OS / 摄影器材经营空间</span>
+<span class="demo-tag">产品流程示意</span>
+</div>
+<div class="app-body">
+<aside class="app-sidebar">
+<span class="mini-logo">R<span>OS</span>
+</span>
+<div>
+<svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="m3 7 9-5 9 5v10l-9 5-9-5V7Zm0 0 9 5 9-5m-9 5v10M7 4.8l9 5">
+</path>
+</svg> 运营概览</div>
+<div class="selected">
+<svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M6 3h12v18H6ZM9 7h6M9 11h6m-6 4h3">
+</path>
+</svg> 租赁订单</div>
+<div>
+<svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="m8 6 2-3h4l2 3h4v14H4V6Z">
+</path>
+<circle cx="12" cy="12" r="4">
+</circle>
+</svg> 器材资产</div>
+<div>
+<svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<rect x="3" y="5" width="18" height="14" rx="2">
+</rect>
+<path d="m9 8 3 4 3-4m-6 4h6m-6 3h6m-3-3v5">
+</path>
+</svg> 定价管理</div>
+<div>
+<svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<circle cx="9" cy="7" r="3">
+</circle>
+<path d="M3 21v-3a6 6 0 0 1 12 0v3m1-16a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 4v3">
+</path>
+</svg> 会员管理</div>
+<span class="workspace-caption" data-industry-workspace>摄影器材空间⌄</span>
+</aside>
+<div class="app-content" id="app-content">
+</div>
+</div>
+</div>
+</div></section>
+<section class="benefits section reveal visible" aria-label="产品能力">
+<div class="benefit">
+<svg class="icon " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="m3 7 9-5 9 5v10l-9 5-9-5V7Zm0 0 9 5 9-5m-9 5v10M7 4.8l9 5">
+</path>
+</svg>
+<h3>资产安排，看得清。</h3>
+<p>区分型号、定价分组与具体资产，<br>让可用、占用与待检查各有归属。</p>
+<span>商品与库存管理</span>
+</div>
+<div class="benefit">
+<svg class="icon " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<rect x="3" y="5" width="18" height="14" rx="2">
+</rect>
+<path d="m9 8 3 4 3-4m-6 4h6m-6 3h6m-3-3v5">
+</path>
+</svg>
+<h3>每笔费用，说得明。</h3>
+<p>租金、服务与优惠分别列明，<br>调价有版本，续租有计算依据。</p>
+<span>定价与订单费用</span>
+</div>
+<div class="benefit">
+<svg class="icon " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<circle cx="9" cy="7" r="3">
+</circle>
+<path d="M3 21v-3a6 6 0 0 1 12 0v3m1-16a3 3 0 0 1 0 6m2 3a5 5 0 0 1 3 4v3">
+</path>
+</svg>
+<h3>团队协作，分得开。</h3>
+<p>客户主档共享，经营空间独立，<br>不同员工按角色与空间分配权限。</p>
+<span>会员与经营空间</span>
+</div>
+</section>
+<section id="industries" class="industry-section">
+<div class="section">
+<div class="section-heading reveal">
+<div>
+<div class="eyebrow">02 — BUILT FOR YOUR BUSINESS</div>
+<h2>不同租赁行业，<br>适配各自的管理方式。</h2>
+</div>
+<p>统一的经营基础，适合各自品类的业务方式。<br>从你的行业出发，了解 Rental OS。</p>
+</div>
+<div class="industry-layout reveal visible">
+<div class="industry-menu" aria-label="选择行业" id="industry-menu">
+</div>
+<div class="industry-photo" id="industry-photo">
+</div>
+<div class="industry-copy" id="industry-copy">
+</div>
+</div>
+</div></section>
+<section id="faq" class="faq-section section reveal visible">
+<div>
+<div class="eyebrow">03 — GOOD TO KNOW</div>
+<h2>开始之前，<br>你可能想知道。</h2>
+<p>先把业务聊清楚，再看产品是否适合。</p>
+</div>
+<div class="faq-list" id="faq-list">
+</div>
+</section>
+<section id="plans" class="final-cta">
+<div class="section cta-inner reveal visible">
+<div>
+<div class="eyebrow">RENTAL OS / SAAS SUBSCRIPTION</div>
+<h2>为你的租赁企业，<br>选择一套合适的系统。</h2>
+<p>先演示业务流程，再沟通适用功能与 SaaS 订阅方案。</p>
+</div>
+<div class="cta-actions">
+<button type="button" class="button white" data-demo>咨询系统订阅方案 <svg class="icon " width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M4 12h15m-6-6 6 6-6 6">
+</path>
+</svg>
+</button>
+<span>具体价格与服务范围在方案沟通时确认</span>
+</div>
+</div>
+</section>
+</main>
+<footer class="section footer">
+<div>
+<a class="logo " href="#home" aria-label="Rental OS 首页">
+<img alt="" width="34" height="34" src="./favicon.svg">
+<span>Rental <b>OS</b>
+</span>
+</a>
+<p>租赁企业的 SaaS 经营管理系统。</p>
+</div>
+<div class="footer-links">
+<a href="#product">产品功能</a>
+<a href="#industries">适用行业</a>
+<button type="button" data-privacy>隐私说明</button>
+</div>
+<div class="footer-bottom">
+<span>© 2026 Rental OS</span>
+<span>场景图为演示素材 · 功能与服务范围以实际方案为准</span>
+</div>
+</footer>
+<dialog class="modal" id="modal" aria-labelledby="dialog-title">
+<div class="modal-inner">
+</div>
+</dialog>
+</body>
+</html>
