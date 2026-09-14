@@ -18,4 +18,6 @@
 
 - `index.html`：官网页面、样式与 SEO 信息
 - `assets/`：官网使用的本地图片素材
+- `robots.txt` / `sitemap.xml`：搜索引擎抓取规则与站点地图
+- `favicon.svg`：浏览器标签页图标
 - `.github/workflows/pages.yml`：GitHub Pages 自动发布工作流
