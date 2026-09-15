@@ -655,7 +655,7 @@ html[data-theme="dark"] .footer-nav a:hover{color:#75b8ff}
   if (!root) return;
   const slides = Array.from(root.querySelectorAll('[data-hero-slide]'));
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const interval = 7200;
+  const interval = 5600;
   let activeIndex = 0;
   let timer = null;
 
@@ -675,12 +675,10 @@ html[data-theme="dark"] .footer-nav a:hover{color:#75b8ff}
 
   const start = () => {
     stop();
-    if (reducedMotion.matches || document.hidden || root.matches(':hover') || root.contains(document.activeElement)) return;
+    if (reducedMotion.matches || document.hidden || root.contains(document.activeElement)) return;
     timer = window.setInterval(() => render(activeIndex + 1), interval);
   };
 
-  root.addEventListener('mouseenter', stop);
-  root.addEventListener('mouseleave', start);
   root.addEventListener('focusin', stop);
   root.addEventListener('focusout', (event) => {
     if (!root.contains(event.relatedTarget)) start();
@@ -702,7 +700,7 @@ html[data-theme="dark"] .footer-nav a:hover{color:#75b8ff}
   const previous = root.querySelector('[data-testimonial-prev]');
   const next = root.querySelector('[data-testimonial-next]');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const interval = 6500;
+  const interval = 5600;
   let activeIndex = 0;
   let timer = null;
 
@@ -730,7 +728,7 @@ html[data-theme="dark"] .footer-nav a:hover{color:#75b8ff}
 
   const start = () => {
     stop();
-    if (reducedMotion.matches || document.hidden || root.matches(':hover') || root.contains(document.activeElement)) return;
+    if (reducedMotion.matches || document.hidden) return;
     timer = window.setInterval(() => render(activeIndex + 1), interval);
   };
 
@@ -748,8 +746,6 @@ html[data-theme="dark"] .footer-nav a:hover{color:#75b8ff}
     render(activeIndex + 1);
     start();
   });
-  root.addEventListener('mouseenter', stop);
-  root.addEventListener('mouseleave', start);
   root.addEventListener('focusin', stop);
   root.addEventListener('focusout', (event) => {
     if (!root.contains(event.relatedTarget)) start();
