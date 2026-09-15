@@ -136,10 +136,10 @@ html[data-theme="dark"] .theme-icon svg.theme-icon-moon{display:block}
 .btn-outline{height:38px;background:#fff;color:#0968ef;border:1.5px solid #0a73ff;box-shadow:0 4px 10px rgba(18,96,203,.05)}
 
 /* Hero */
-.hero{position:relative;min-height:clamp(560px,43vw,660px);height:clamp(560px,43vw,660px);background:#eaf4ff;overflow:visible}
+.hero{position:relative;min-height:clamp(560px,43vw,660px);height:clamp(560px,43vw,660px);background:linear-gradient(180deg,#f6fbff 0%,#eef8ff 52%,#e5f3ff 100%);overflow:visible}
 .hero:before,.hero:after{display:none}
 .hero-backgrounds{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.hero-background{position:absolute;inset:0;background-position:center center;background-size:cover;background-repeat:no-repeat;opacity:0;transition:opacity .65s ease}
+.hero-background{position:absolute;inset:0;background-position:center center;background-size:auto 100%;background-repeat:no-repeat;opacity:0;transition:opacity .65s ease}
 .hero-background.is-active{opacity:1}
 .hero .container{position:relative;z-index:2;height:100%;min-height:100%;padding:64px 0 48px;display:flex;align-items:center}
 .hero-copy{position:relative;z-index:3;width:35%;min-width:350px}
@@ -346,9 +346,9 @@ html[data-theme="dark"] .footer-nav a:hover{color:#75b8ff}
 
 /* responsive */
 @media (min-width:901px) and (max-width:1180px){
-  /* Keep the desktop composition intact while the viewport narrows: the
-     full-bleed artwork scales from its width instead of covering the hero
-     by height and pushing the laptop into the copy column. */
+  /* At narrow desktop widths the artwork must still cover the full stage;
+     the copy column is narrowed at the same breakpoint to keep the two
+     visual regions separate until the mobile layout takes over. */
   .hero-background{background-size:cover;background-position:20% center}
   .nav{gap:clamp(20px,3vw,34px);margin-left:24px;font-size:13px}
   .nav a{white-space:nowrap}
@@ -449,8 +449,8 @@ html[data-theme="dark"] .footer-nav a:hover{color:#75b8ff}
 <section class="hero" data-hero-carousel aria-label="Rental OS 产品展示">
   <div class="hero-backgrounds" aria-hidden="true">
     <div class="hero-background is-active" data-hero-slide style="background-image:url('assets/hero-background.png')"></div>
+    <div class="hero-background" data-hero-slide style="background-image:url('assets/hero-background2.png')"></div>
     <div class="hero-background" data-hero-slide style="background-image:url('assets/hero-background3.png')"></div>
-    <div class="hero-background" data-hero-slide style="background-image:url('assets/hero-background4.png')"></div>
   </div>
   <div class="container">
     <div class="hero-copy">
