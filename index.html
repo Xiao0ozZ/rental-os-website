@@ -135,7 +135,7 @@ button{font:inherit}
 .hero{position:relative;min-height:clamp(560px,43vw,660px);height:clamp(560px,43vw,660px);background:#eaf4ff;overflow:visible}
 .hero:before,.hero:after{display:none}
 .hero-backgrounds{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.hero-background{position:absolute;inset:0;background-position:right top;background-size:auto 100%;background-repeat:no-repeat;opacity:0;transition:opacity .65s ease}
+.hero-background{position:absolute;inset:0;background-position:center center;background-size:cover;background-repeat:no-repeat;opacity:0;transition:opacity .65s ease}
 .hero-background.is-active{opacity:1}
 .hero .container{position:relative;z-index:2;height:100%;min-height:100%;padding:64px 0 48px;display:flex;align-items:center}
 .hero-copy{position:relative;z-index:3;width:35%;min-width:350px}
@@ -341,6 +341,20 @@ html[data-theme="dark"] .footer-nav,html[data-theme="dark"] .copyright,html[data
 html[data-theme="dark"] .footer-nav a:hover{color:#75b8ff}
 
 /* responsive */
+@media (min-width:901px) and (max-width:1180px){
+  /* Keep the desktop composition intact while the viewport narrows: the
+     full-bleed artwork scales from its width instead of covering the hero
+     by height and pushing the laptop into the copy column. */
+  .hero-background{background-size:cover;background-position:20% center}
+  .nav{gap:clamp(20px,3vw,34px);margin-left:24px;font-size:13px}
+  .nav a{white-space:nowrap}
+  .hero-copy{width:34%;min-width:0;max-width:340px}
+  .hero h1{font-size:clamp(42px,4.7vw,54px);letter-spacing:-1.5px}
+  .hero-desc{font-size:clamp(13px,1.45vw,15px);max-width:300px;margin:16px 0 20px}
+  .hero-actions{gap:10px}
+  .hero-actions .btn{min-width:128px;padding-left:18px;padding-right:18px}
+  .hero-points{gap:10px;font-size:11px}
+}
 @media (max-width: 900px){
   .container{width:min(690px,91vw)}
   .header{height:62px;position:relative;inset:auto;background:rgba(255,255,255,.96);border-bottom:1px solid rgba(225,235,248,.75)}
