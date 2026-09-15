@@ -177,6 +177,11 @@ button{font:inherit}
 
 /* Testimonial */
 .testimonial{padding:16px 0 24px}
+.testimonial-carousel{position:relative}
+.testimonial-track{position:relative}
+.testimonial-slide{display:none}
+.testimonial-slide.is-active{display:block;animation:testimonial-in .45s ease both}
+@keyframes testimonial-in{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:translateX(0)}}
 .testimonial-card{height:112px;border:1px solid #e2ebf7;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 8px 22px rgba(35,87,151,.06);display:grid;grid-template-columns:160px 1fr 190px;overflow:hidden;align-items:stretch}
 .portrait-wrap{background:linear-gradient(145deg,#e7eef7,#f8fbfe);display:flex;align-items:end;justify-content:center;overflow:hidden}
 .portrait-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 30%;border-radius:0}
@@ -188,7 +193,17 @@ button{font:inherit}
 .kpis{display:grid;grid-template-columns:1fr 1fr;align-items:center;text-align:center;position:relative}
 .kpis:before{content:"";position:absolute;left:50%;top:28px;bottom:28px;width:1px;background:#dce9f8}
 .kpi b{font-size:30px;color:#0a70fb;display:block;line-height:1}
+.kpi b small{font-size:.55em}
 .kpi span{font-size:12px;color:#506782;display:block;margin-top:6px}
+.testimonial-controls{display:flex;align-items:center;justify-content:space-between;margin:12px 2px 0}
+.testimonial-dots{display:flex;align-items:center;gap:8px}
+.testimonial-dot{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:#c8d8ed;cursor:pointer;transition:width .25s ease,background .25s ease,transform .25s ease}
+.testimonial-dot:hover{background:#80b5f7;transform:scale(1.15)}
+.testimonial-dot[aria-selected="true"]{width:24px;border-radius:8px;background:#0b6ffb}
+.testimonial-arrows{display:flex;gap:8px}
+.testimonial-arrow{width:28px;height:28px;padding:0;border:1px solid #d6e5f7;border-radius:50%;background:#fff;color:#176fe8;cursor:pointer;display:grid;place-items:center;line-height:1;transition:border-color .2s ease,background .2s ease,color .2s ease}
+.testimonial-arrow:hover{border-color:#0b6ffb;background:#eef6ff}
+@media (prefers-reduced-motion:reduce){.testimonial-slide.is-active{animation:none}.testimonial-dot,.testimonial-arrow{transition:none}}
 
 /* CTA */
 .cta{padding:12px 0 26px}
@@ -349,12 +364,51 @@ button{font:inherit}
   </div>
 </section>
 
-<section class="section testimonial" id="about">
+<section class="section testimonial" id="about" aria-label="客户案例">
   <div class="container">
-    <div class="testimonial-card">
-      <div class="portrait-wrap"><img src="assets/testimonial-portrait.png" alt="客户代表"></div>
-      <div class="quote"><p>Rental OS 帮助我们将整体运营效率提升了 60% 以上，从多门店管理到订单履约都变得更加高效、透明。现在我们可以把更多精力放在业务拓展上，过去一年营收实现了 3 倍增长。</p><small><strong>陈先生</strong> 某知名摄影器材租赁品牌&nbsp; 创始人</small></div>
-      <div class="kpis"><div class="kpi"><b>60%+</b><span>运营效率提升</span></div><div class="kpi"><b>3 <small>倍</small></b><span>年营收增长</span></div></div>
+    <div class="testimonial-carousel" data-testimonial-carousel>
+      <div class="testimonial-track" aria-live="polite">
+        <article class="testimonial-slide is-active" data-testimonial-slide id="testimonial-slide-photography" aria-label="摄影器材租赁示例案例">
+          <div class="testimonial-card">
+            <div class="portrait-wrap"><img src="assets/testimonial-portrait.png" alt="摄影器材租赁示例客户陈先生"></div>
+            <div class="quote"><p>Rental OS 帮助我们将整体运营效率提升了 60% 以上，从多门店管理到订单履约都变得更加高效、透明。现在我们可以把更多精力放在业务拓展上。</p><small><strong>陈先生</strong>某知名摄影器材租赁品牌 · 示例客户</small></div>
+            <div class="kpis"><div class="kpi"><b>60%+</b><span>运营效率提升</span></div><div class="kpi"><b>3 <small>倍</small></b><span>年营收增长</span></div></div>
+          </div>
+        </article>
+        <article class="testimonial-slide" data-testimonial-slide id="testimonial-slide-camping" aria-label="露营装备租赁示例案例" hidden>
+          <div class="testimonial-card">
+            <div class="portrait-wrap"><img src="assets/testimonial-camping.png" alt="露营装备租赁示例客户林女士"></div>
+            <div class="quote"><p>从装备上架、预约排期到归还检查，团队终于可以在一个后台协同处理。旺季订单增加时，也不用反复核对表格。</p><small><strong>林女士</strong>某户外装备租赁品牌 · 示例客户</small></div>
+            <div class="kpis"><div class="kpi"><b>45%</b><span>订单处理效率</span></div><div class="kpi"><b>2.1 <small>倍</small></b><span>资产周转提升</span></div></div>
+          </div>
+        </article>
+        <article class="testimonial-slide" data-testimonial-slide id="testimonial-slide-vehicle" aria-label="车辆租赁示例案例" hidden>
+          <div class="testimonial-card">
+            <div class="portrait-wrap"><img src="assets/testimonial-vehicle.png" alt="车辆租赁示例客户周先生"></div>
+            <div class="quote"><p>多门店车辆排期、车辆状态和订单履约统一之后，调度人员能更快找到可用车辆，客户等待时间也明显缩短。</p><small><strong>周先生</strong>某城市汽车租赁企业 · 示例客户</small></div>
+            <div class="kpis"><div class="kpi"><b>50%+</b><span>车队协同效率</span></div><div class="kpi"><b>30%</b><span>空置率下降</span></div></div>
+          </div>
+        </article>
+        <article class="testimonial-slide" data-testimonial-slide id="testimonial-slide-engineering" aria-label="工程设备租赁示例案例" hidden>
+          <div class="testimonial-card">
+            <div class="portrait-wrap"><img src="assets/testimonial-engineering.png" alt="工程设备租赁示例客户王女士"></div>
+            <div class="quote"><p>设备状态、检验日期和交付安排都集中在同一套流程里，现场团队不用来回查表，设备交接也更有依据。</p><small><strong>王女士</strong>某工程设备租赁企业 · 示例客户</small></div>
+            <div class="kpis"><div class="kpi"><b>40%+</b><span>交付效率提升</span></div><div class="kpi"><b>25%</b><span>设备利用率提升</span></div></div>
+          </div>
+        </article>
+      </div>
+      <div class="testimonial-controls">
+        <div class="testimonial-dots" role="tablist" aria-label="选择客户案例">
+          <button class="testimonial-dot" type="button" role="tab" aria-label="摄影器材租赁示例案例" aria-selected="true" aria-controls="testimonial-slide-photography" data-testimonial-to="0"></button>
+          <button class="testimonial-dot" type="button" role="tab" aria-label="露营装备租赁示例案例" aria-selected="false" aria-controls="testimonial-slide-camping" data-testimonial-to="1" tabindex="-1"></button>
+          <button class="testimonial-dot" type="button" role="tab" aria-label="车辆租赁示例案例" aria-selected="false" aria-controls="testimonial-slide-vehicle" data-testimonial-to="2" tabindex="-1"></button>
+          <button class="testimonial-dot" type="button" role="tab" aria-label="工程设备租赁示例案例" aria-selected="false" aria-controls="testimonial-slide-engineering" data-testimonial-to="3" tabindex="-1"></button>
+        </div>
+        <div class="testimonial-arrows">
+          <button class="testimonial-arrow" type="button" aria-label="上一个客户案例" data-testimonial-prev>←</button>
+          <button class="testimonial-arrow" type="button" aria-label="下一个客户案例" data-testimonial-next>→</button>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -372,5 +426,75 @@ button{font:inherit}
     <div class="footer-slogan">让好资产创造更大价值！</div>
   </div>
 </footer>
+<script>
+(() => {
+  const root = document.querySelector('[data-testimonial-carousel]');
+  if (!root) return;
+  const slides = Array.from(root.querySelectorAll('[data-testimonial-slide]'));
+  const dots = Array.from(root.querySelectorAll('[data-testimonial-to]'));
+  const previous = root.querySelector('[data-testimonial-prev]');
+  const next = root.querySelector('[data-testimonial-next]');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const interval = 6500;
+  let activeIndex = 0;
+  let timer = null;
+
+  const render = (index) => {
+    activeIndex = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      const isActive = slideIndex === activeIndex;
+      slide.hidden = !isActive;
+      slide.classList.toggle('is-active', isActive);
+      slide.setAttribute('aria-hidden', String(!isActive));
+    });
+    dots.forEach((dot, dotIndex) => {
+      const isActive = dotIndex === activeIndex;
+      dot.setAttribute('aria-selected', String(isActive));
+      dot.tabIndex = isActive ? 0 : -1;
+    });
+  };
+
+  const stop = () => {
+    if (timer !== null) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+  };
+
+  const start = () => {
+    stop();
+    if (reducedMotion.matches || document.hidden || root.matches(':hover') || root.contains(document.activeElement)) return;
+    timer = window.setInterval(() => render(activeIndex + 1), interval);
+  };
+
+  dots.forEach((dot, dotIndex) => {
+    dot.addEventListener('click', () => {
+      render(dotIndex);
+      start();
+    });
+  });
+  previous?.addEventListener('click', () => {
+    render(activeIndex - 1);
+    start();
+  });
+  next?.addEventListener('click', () => {
+    render(activeIndex + 1);
+    start();
+  });
+  root.addEventListener('mouseenter', stop);
+  root.addEventListener('mouseleave', start);
+  root.addEventListener('focusin', stop);
+  root.addEventListener('focusout', (event) => {
+    if (!root.contains(event.relatedTarget)) start();
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop();
+    else start();
+  });
+
+  render(0);
+  start();
+})();
+</script>
 </body>
 </html>
