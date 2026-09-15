@@ -26,6 +26,19 @@
 <meta name="twitter:image" content="https://xiao0ozz.github.io/rental-os-website/assets/hero-background.png" />
 <meta name="twitter:image:alt" content="Rental OS 租赁业务管理平台" />
 <title>Rental OS｜新一代租赁业务管理平台</title>
+<script>
+(() => {
+  const themeKey = "rental-os-theme";
+  let preference = "system";
+  try {
+    const stored = localStorage.getItem(themeKey);
+    if (stored === "light" || stored === "dark" || stored === "system") preference = stored;
+  } catch (_) {}
+  const systemDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  document.documentElement.dataset.themePreference = preference;
+  document.documentElement.dataset.theme = preference === "system" ? (systemDark ? "dark" : "light") : preference;
+})();
+</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -85,6 +98,7 @@ button{font:inherit}
 /* Brand */
 .brand{display:flex;align-items:center;gap:8px;white-space:nowrap}
 .brand-logo{display:block;width:190px;height:auto;object-fit:contain}
+.brand-logo-dark{display:none}
 
 /* Header */
 .header{height:64px;background:transparent;border-bottom:0;position:absolute;inset:0 0 auto;width:100%;z-index:20}
@@ -94,7 +108,22 @@ button{font:inherit}
 .nav{display:flex;align-items:center;gap:46px;margin-left:70px;font-size:14px;font-weight:650;color:#172b57}
 .nav a{transition:.2s}
 .nav a:hover{color:var(--blue)}
-.header-right{margin-left:auto}
+.header-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.theme-control{position:relative}
+.theme-toggle{height:36px;display:inline-flex;align-items:center;gap:7px;padding:0 12px;border:1px solid rgba(112,145,183,.28);border-radius:20px;background:rgba(255,255,255,.68);color:#21395c;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(25,86,160,.06);transition:background .2s ease,border-color .2s ease,color .2s ease,box-shadow .2s ease}
+.theme-toggle:hover{border-color:rgba(11,111,251,.48);background:rgba(255,255,255,.92);box-shadow:0 6px 15px rgba(25,86,160,.11)}
+.theme-toggle:focus-visible{outline:3px solid rgba(11,111,251,.28);outline-offset:3px}
+.theme-icon,.theme-option-icon{position:relative;display:inline-block;width:16px;height:16px;flex:0 0 16px;border:1.5px solid currentColor;border-radius:50%;overflow:hidden;background:linear-gradient(90deg,currentColor 0 50%,transparent 50%)}
+.theme-icon:after,.theme-option-icon:after{content:"";position:absolute;inset:3px;border-radius:50%;border:1px solid rgba(255,255,255,.72)}
+.theme-chevron{width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+.theme-menu{position:absolute;right:0;top:calc(100% + 9px);z-index:30;width:148px;padding:6px;border:1px solid #dce8f6;border-radius:12px;background:rgba(255,255,255,.98);box-shadow:0 14px 30px rgba(25,74,134,.16)}
+.theme-option{width:100%;height:36px;display:flex;align-items:center;gap:9px;padding:0 9px;border:0;border-radius:8px;background:transparent;color:#294463;font-size:12px;text-align:left;cursor:pointer}
+.theme-option:hover{background:#eef6ff;color:#075fdc}
+.theme-option.is-light .theme-option-icon{color:#e0a100;background:#fff}
+.theme-option.is-dark .theme-option-icon{color:#7fb8ff;background:#142b47}
+.theme-option.is-system .theme-option-icon{color:#267cf0}
+.theme-check{margin-left:auto;width:15px;color:#0b6ffb;font-size:14px;font-weight:800;text-align:center}
+.theme-option[aria-checked="false"] .theme-check{visibility:hidden}
 .btn{border:0;border-radius:24px;height:38px;padding:0 24px;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-weight:700;font-size:13.5px;cursor:pointer;transition:.2s}
 .btn-arrow{display:inline-block;width:15px;height:10px;background:currentColor;clip-path:polygon(0 40%,62% 40%,62% 0,100% 50%,62% 100%,62% 60%,0 60%);transition:transform .24s ease}
 .btn:hover .btn-arrow{transform:translateX(2px)}
@@ -244,6 +273,73 @@ button{font:inherit}
 .social-icon{width:18px;height:18px;display:grid;place-items:center;font-size:10px;font-weight:800;border-radius:50%}
 .footer-slogan{margin-left:70px;font-size:12px;color:#60748e}
 
+/* Dark theme */
+html[data-theme="dark"]{color-scheme:dark;--navy:#eef5ff;--muted:#a9bdd5;--line:#294663;--panel:#10253d}
+html[data-theme="dark"] body{background:#071321;color:#eef5ff}
+html[data-theme="dark"] .brand-logo-light{display:none}
+html[data-theme="dark"] .brand-logo-dark{display:block}
+html[data-theme="dark"] .header{background:rgba(7,19,33,.78);border-bottom:1px solid rgba(126,169,214,.16)}
+html[data-theme="dark"] .header:before{background:linear-gradient(90deg,rgba(7,19,33,.98) 0%,rgba(7,19,33,.96) 45%,rgba(7,19,33,.82) 58%,rgba(7,19,33,.28) 80%,rgba(7,19,33,0) 100%)}
+html[data-theme="dark"] .nav{color:#dce9fb}
+html[data-theme="dark"] .nav a:hover{color:#6bb0ff}
+html[data-theme="dark"] .theme-toggle{border-color:rgba(132,177,224,.30);background:rgba(15,36,59,.82);color:#dcecff;box-shadow:0 5px 14px rgba(0,0,0,.18)}
+html[data-theme="dark"] .theme-toggle:hover{border-color:rgba(100,171,255,.68);background:#173452;box-shadow:0 7px 18px rgba(0,0,0,.24)}
+html[data-theme="dark"] .theme-menu{border-color:#2a4968;background:rgba(13,32,53,.98);box-shadow:0 16px 32px rgba(0,0,0,.32)}
+html[data-theme="dark"] .theme-option{color:#d5e5f7}
+html[data-theme="dark"] .theme-option:hover{background:#173a5d;color:#7dbaff}
+html[data-theme="dark"] .hero{background:#0b2138}
+html[data-theme="dark"] .hero-background{filter:brightness(.58) saturate(.86)}
+html[data-theme="dark"] .eyebrow{color:#b5c9e0}
+html[data-theme="dark"] .hero h1{color:#f0f6ff}
+html[data-theme="dark"] .hero h1 span{color:#60a7ff}
+html[data-theme="dark"] .hero-desc{color:#c0d0e4}
+html[data-theme="dark"] .hero-points{color:#c9d9ec}
+html[data-theme="dark"] .metrics{background:rgba(12,31,52,.96);border-color:rgba(101,153,204,.30);box-shadow:0 14px 35px rgba(0,0,0,.28)}
+html[data-theme="dark"] .metric:not(:last-child):after{background:#2c4c6b}
+html[data-theme="dark"] .metric b{color:#eff6ff}
+html[data-theme="dark"] .metric small{color:#afc2d9}
+html[data-theme="dark"] .metric em{color:#70b4ff}
+html[data-theme="dark"] .section-title{color:#f0f6ff}
+html[data-theme="dark"] .section-sub{color:#a7bbd3}
+html[data-theme="dark"] .feature-card{background:linear-gradient(180deg,#122a45,#0d1e32);border-color:#294865;box-shadow:0 9px 22px rgba(0,0,0,.20)}
+html[data-theme="dark"] .feature-card h3{color:#edf5ff}
+html[data-theme="dark"] .feature-card p{color:#b5c9df}
+html[data-theme="dark"] .round-arrow{border-color:rgba(98,170,250,.45);background:linear-gradient(145deg,#173857 8%,#0e2238 100%);box-shadow:0 6px 15px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.12)}
+html[data-theme="dark"] .round-arrow:after{border-color:rgba(255,255,255,.14)}
+html[data-theme="dark"] .feature-card:hover .round-arrow,html[data-theme="dark"] .industry-card:hover .round-arrow{border-color:#6bb3ff;background:linear-gradient(145deg,#1b466b 5%,#12314f 100%);box-shadow:0 9px 20px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.18)}
+html[data-theme="dark"] .section-link{color:#70b4ff}
+html[data-theme="dark"] .section-link:hover{color:#a4d1ff}
+html[data-theme="dark"] .link-arrow{border-color:rgba(98,170,250,.45);background:linear-gradient(145deg,#173857 8%,#0e2238 100%);box-shadow:0 5px 13px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.12)}
+html[data-theme="dark"] .link-arrow:after{border-color:rgba(255,255,255,.14)}
+html[data-theme="dark"] .section-link:hover .link-arrow{border-color:#6bb3ff;background:linear-gradient(145deg,#1b466b 5%,#12314f 100%);box-shadow:0 8px 18px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.18)}
+html[data-theme="dark"] .industry-card{background:#0e2034;border-color:#294865;box-shadow:0 9px 22px rgba(0,0,0,.22)}
+html[data-theme="dark"] .industry-body h3{color:#edf5ff}
+html[data-theme="dark"] .industry-body p{color:#b6c9df}
+html[data-theme="dark"] .capability:after{border-color:rgba(96,170,250,.17)}
+html[data-theme="dark"] .capability-copy h2,html[data-theme="dark"] .multi-copy h2{color:#f0f6ff}
+html[data-theme="dark"] .capability-copy p,html[data-theme="dark"] .multi-copy p{color:#b8cbe0}
+html[data-theme="dark"] .bullets{color:#c0d1e4}
+html[data-theme="dark"] .bullet strong{color:#e7f1ff}
+html[data-theme="dark"] .capability-visual img,html[data-theme="dark"] .multi-visual img{filter:brightness(.78) saturate(.88)}
+html[data-theme="dark"] .multi:after{background:radial-gradient(ellipse,rgba(55,132,218,.22),transparent 65%)}
+html[data-theme="dark"] .testimonial-card{background:linear-gradient(180deg,#10263f,#0c1c2f);border-color:#294865;box-shadow:0 9px 22px rgba(0,0,0,.22)}
+html[data-theme="dark"] .portrait-wrap{background:linear-gradient(145deg,#172f4a,#0d1e32)}
+html[data-theme="dark"] .quote p{color:#c3d3e6}
+html[data-theme="dark"] .quote small{color:#a9bdd5}
+html[data-theme="dark"] .quote strong{color:#e4efff}
+html[data-theme="dark"] .kpis:before{background:#2d4d6c}
+html[data-theme="dark"] .kpi span{color:#aec2d9}
+html[data-theme="dark"] .testimonial-dot{background:#355674}
+html[data-theme="dark"] .testimonial-dot:hover{background:#6aaef1}
+html[data-theme="dark"] .testimonial-dot[aria-selected="true"]{background:#2f8cff}
+html[data-theme="dark"] .testimonial-arrow{border-color:rgba(98,170,250,.45);background:linear-gradient(145deg,#173857 8%,#0e2238 100%);box-shadow:0 6px 15px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.12)}
+html[data-theme="dark"] .testimonial-arrow:after{border-color:rgba(255,255,255,.14)}
+html[data-theme="dark"] .testimonial-arrow:hover{border-color:#6bb3ff;background:linear-gradient(145deg,#1b466b 5%,#12314f 100%);box-shadow:0 9px 20px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.18)}
+html[data-theme="dark"] .cta-card{box-shadow:0 10px 28px rgba(0,0,0,.30)}
+html[data-theme="dark"] .footer{background:#06111f;border-top:1px solid rgba(101,153,204,.18)}
+html[data-theme="dark"] .footer-nav,html[data-theme="dark"] .copyright,html[data-theme="dark"] .social,html[data-theme="dark"] .footer-slogan{color:#a9bdd5}
+html[data-theme="dark"] .footer-nav a:hover{color:#75b8ff}
+
 /* responsive */
 @media (max-width: 900px){
   .container{width:min(690px,91vw)}
@@ -286,6 +382,8 @@ button{font:inherit}
   .footer-slogan{margin-left:auto}
 }
 @media (max-width: 560px){
+  .theme-toggle{width:38px;padding:0;justify-content:center}
+  .theme-toggle .theme-label,.theme-toggle .theme-chevron{display:none}
   .header .btn{height:36px;padding:0 17px;font-size:12px}
   .hero h1{font-size:36px}.eyebrow{font-size:14px}.hero-desc{font-size:13px}
   .hero-actions{flex-direction:column;align-items:center}.hero-actions .btn{width:180px}
@@ -305,12 +403,27 @@ button{font:inherit}
 <header class="header">
   <div class="container">
     <a class="brand" href="#top" aria-label="Rental OS 首页">
-      <img class="brand-logo" src="assets/logo-primary-with-tagline.png" alt="Rental OS · Build a Rental World" />
+      <img class="brand-logo brand-logo-light" src="assets/logo-primary-with-tagline.png" alt="Rental OS · Build a Rental World" />
+      <img class="brand-logo brand-logo-dark" src="assets/logo-horizontal-white.png" alt="" aria-hidden="true" />
     </a>
     <nav class="nav" aria-label="主导航">
       <a href="#product">产品</a><a href="#solution">解决方案</a><a href="#industry">行业场景</a><a href="#about">关于我们</a>
     </nav>
-    <div class="header-right"><a href="#demo" class="btn btn-primary">预约演示 <span class="btn-arrow" aria-hidden="true"></span></a></div>
+    <div class="header-right">
+      <div class="theme-control" data-theme-control>
+        <button class="theme-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-label="选择网站主题" data-theme-menu-toggle>
+          <span class="theme-icon" aria-hidden="true"></span>
+          <span class="theme-label" data-theme-label>跟随系统</span>
+          <span class="theme-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="theme-menu" role="menu" hidden data-theme-menu>
+          <button class="theme-option is-system" type="button" role="menuitemradio" aria-checked="true" data-theme-option="system"><span class="theme-option-icon" aria-hidden="true"></span><span>跟随系统</span><span class="theme-check" aria-hidden="true">✓</span></button>
+          <button class="theme-option is-light" type="button" role="menuitemradio" aria-checked="false" data-theme-option="light"><span class="theme-option-icon" aria-hidden="true"></span><span>浅色模式</span><span class="theme-check" aria-hidden="true">✓</span></button>
+          <button class="theme-option is-dark" type="button" role="menuitemradio" aria-checked="false" data-theme-option="dark"><span class="theme-option-icon" aria-hidden="true"></span><span>深色模式</span><span class="theme-check" aria-hidden="true">✓</span></button>
+        </div>
+      </div>
+      <a href="#demo" class="btn btn-primary">预约演示 <span class="btn-arrow" aria-hidden="true"></span></a>
+    </div>
   </div>
 </header>
 
@@ -447,13 +560,82 @@ button{font:inherit}
 
 <footer class="footer">
   <div class="container">
-    <div class="footer-brand"><a class="brand" href="#top"><img class="brand-logo" src="assets/logo-primary-with-tagline.png" alt="Rental OS · Build a Rental World" /></a></div>
+    <div class="footer-brand"><a class="brand" href="#top"><img class="brand-logo brand-logo-light" src="assets/logo-primary-with-tagline.png" alt="Rental OS · Build a Rental World" /><img class="brand-logo brand-logo-dark" src="assets/logo-horizontal-white.png" alt="" aria-hidden="true" /></a></div>
     <div><nav class="footer-nav"><a href="#product">产品</a><a href="#solution">解决方案</a><a href="#industry">行业场景</a><a href="#about">关于我们</a><a href="#">帮助中心</a></nav><div class="copyright">© 2024 Rental OS. 保留所有权利.</div></div>
     <div class="social" aria-label="社交媒体"><span class="social-icon">●</span><span class="social-icon">◎</span><span class="social-icon">▶</span></div>
     <div class="footer-slogan">让好资产创造更大价值！</div>
   </div>
 </footer>
 <script>
+(() => {
+  const root = document.documentElement;
+  const control = document.querySelector('[data-theme-control]');
+  if (!control) return;
+  const toggle = control.querySelector('[data-theme-menu-toggle]');
+  const menu = control.querySelector('[data-theme-menu]');
+  const label = control.querySelector('[data-theme-label]');
+  const options = Array.from(control.querySelectorAll('[data-theme-option]'));
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  const themeKey = 'rental-os-theme';
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  const labels = {system: '跟随系统', light: '浅色模式', dark: '深色模式'};
+
+  const getEffectiveTheme = (preference) => preference === 'system' ? (media.matches ? 'dark' : 'light') : preference;
+  const applyTheme = (preference, persist) => {
+    const nextPreference = Object.prototype.hasOwnProperty.call(labels, preference) ? preference : 'system';
+    root.dataset.themePreference = nextPreference;
+    root.dataset.theme = getEffectiveTheme(nextPreference);
+    label.textContent = labels[nextPreference];
+    toggle.setAttribute('aria-label', `选择网站主题，当前${labels[nextPreference]}`);
+    options.forEach((option) => {
+      option.setAttribute('aria-checked', String(option.dataset.themeOption === nextPreference));
+    });
+    if (themeColor) themeColor.setAttribute('content', root.dataset.theme === 'dark' ? '#071321' : '#0b6ffb');
+    if (persist) {
+      try { localStorage.setItem(themeKey, nextPreference); } catch (_) {}
+    }
+  };
+  const closeMenu = () => {
+    menu.hidden = true;
+    toggle.setAttribute('aria-expanded', 'false');
+  };
+  const openMenu = () => {
+    menu.hidden = false;
+    toggle.setAttribute('aria-expanded', 'true');
+  };
+
+  let savedPreference = root.dataset.themePreference || 'system';
+  try {
+    const stored = localStorage.getItem(themeKey);
+    if (stored === 'light' || stored === 'dark' || stored === 'system') savedPreference = stored;
+  } catch (_) {}
+  applyTheme(savedPreference, false);
+  toggle.addEventListener('click', () => {
+    if (menu.hidden) openMenu();
+    else closeMenu();
+  });
+  options.forEach((option) => {
+    option.addEventListener('click', () => {
+      applyTheme(option.dataset.themeOption, true);
+      closeMenu();
+    });
+  });
+  document.addEventListener('click', (event) => {
+    if (!control.contains(event.target)) closeMenu();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenu();
+      toggle.focus();
+    }
+  });
+  const handleSystemThemeChange = () => {
+    if (root.dataset.themePreference === 'system') applyTheme('system', false);
+  };
+  if (media.addEventListener) media.addEventListener('change', handleSystemThemeChange);
+  else media.addListener(handleSystemThemeChange);
+})();
+
 (() => {
   const root = document.querySelector('[data-hero-carousel]');
   if (!root) return;
