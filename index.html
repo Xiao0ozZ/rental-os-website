@@ -110,12 +110,16 @@ button{font:inherit}
 .nav a:hover{color:var(--blue)}
 .header-right{margin-left:auto;display:flex;align-items:center;gap:10px}
 .theme-control{position:relative}
-.theme-toggle{height:36px;display:inline-flex;align-items:center;gap:7px;padding:0 12px;border:1px solid rgba(112,145,183,.28);border-radius:20px;background:rgba(255,255,255,.68);color:#21395c;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(25,86,160,.06);transition:background .2s ease,border-color .2s ease,color .2s ease,box-shadow .2s ease}
+.theme-toggle{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;padding:0;border:1px solid rgba(112,145,183,.28);border-radius:50%;background:rgba(255,255,255,.68);color:#21395c;cursor:pointer;box-shadow:0 4px 12px rgba(25,86,160,.06);transition:background .2s ease,border-color .2s ease,color .2s ease,box-shadow .2s ease}
 .theme-toggle:hover{border-color:rgba(11,111,251,.48);background:rgba(255,255,255,.92);box-shadow:0 6px 15px rgba(25,86,160,.11)}
 .theme-toggle:focus-visible{outline:3px solid rgba(11,111,251,.28);outline-offset:3px}
-.theme-icon,.theme-option-icon{position:relative;display:inline-block;width:16px;height:16px;flex:0 0 16px;border:1.5px solid currentColor;border-radius:50%;overflow:hidden;background:linear-gradient(90deg,currentColor 0 50%,transparent 50%)}
-.theme-icon:after,.theme-option-icon:after{content:"";position:absolute;inset:3px;border-radius:50%;border:1px solid rgba(255,255,255,.72)}
-.theme-chevron{width:6px;height:6px;margin-left:1px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+.theme-icon{width:18px;height:18px;display:grid;place-items:center;flex:0 0 18px}
+.theme-icon svg{display:block;width:18px;height:18px}
+.theme-icon svg.theme-icon-moon{display:none}
+html[data-theme="dark"] .theme-icon svg.theme-icon-sun{display:none}
+html[data-theme="dark"] .theme-icon svg.theme-icon-moon{display:block}
+.theme-option-icon{position:relative;display:inline-block;width:16px;height:16px;flex:0 0 16px;border:1.5px solid currentColor;border-radius:50%;overflow:hidden;background:linear-gradient(90deg,currentColor 0 50%,transparent 50%)}
+.theme-option-icon:after{content:"";position:absolute;inset:3px;border-radius:50%;border:1px solid rgba(255,255,255,.72)}
 .theme-menu{position:absolute;right:0;top:calc(100% + 9px);z-index:30;width:148px;padding:6px;border:1px solid #dce8f6;border-radius:12px;background:rgba(255,255,255,.98);box-shadow:0 14px 30px rgba(25,74,134,.16)}
 .theme-option{width:100%;height:36px;display:flex;align-items:center;gap:9px;padding:0 9px;border:0;border-radius:8px;background:transparent;color:#294463;font-size:12px;text-align:left;cursor:pointer}
 .theme-option:hover{background:#eef6ff;color:#075fdc}
@@ -396,8 +400,7 @@ html[data-theme="dark"] .footer-nav a:hover{color:#75b8ff}
   .footer-slogan{margin-left:auto}
 }
 @media (max-width: 560px){
-  .theme-toggle{width:38px;padding:0;justify-content:center}
-  .theme-toggle .theme-label,.theme-toggle .theme-chevron{display:none}
+  .theme-toggle{width:36px;height:36px}
   .header .btn{height:36px;padding:0 17px;font-size:12px}
   .hero h1{font-size:36px}.eyebrow{font-size:14px}.hero-desc{font-size:13px}
   .hero-actions{flex-direction:column;align-items:center}.hero-actions .btn{width:180px}
@@ -425,10 +428,11 @@ html[data-theme="dark"] .footer-nav a:hover{color:#75b8ff}
     </nav>
     <div class="header-right">
       <div class="theme-control" data-theme-control>
-        <button class="theme-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-label="选择网站主题" data-theme-menu-toggle>
-          <span class="theme-icon" aria-hidden="true"></span>
-          <span class="theme-label" data-theme-label>跟随系统</span>
-          <span class="theme-chevron" aria-hidden="true"></span>
+        <button class="theme-toggle" type="button" aria-haspopup="true" aria-expanded="false" aria-label="选择网站主题" title="选择网站主题" data-theme-menu-toggle>
+          <span class="theme-icon" aria-hidden="true">
+            <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+            <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.4 15.2A8.6 8.6 0 0 1 8.8 3.6 8.6 8.6 0 1 0 20.4 15.2Z"></path></svg>
+          </span>
         </button>
         <div class="theme-menu" role="menu" hidden data-theme-menu>
           <button class="theme-option is-system" type="button" role="menuitemradio" aria-checked="true" data-theme-option="system"><span class="theme-option-icon" aria-hidden="true"></span><span>跟随系统</span><span class="theme-check" aria-hidden="true">✓</span></button>
@@ -587,7 +591,6 @@ html[data-theme="dark"] .footer-nav a:hover{color:#75b8ff}
   if (!control) return;
   const toggle = control.querySelector('[data-theme-menu-toggle]');
   const menu = control.querySelector('[data-theme-menu]');
-  const label = control.querySelector('[data-theme-label]');
   const options = Array.from(control.querySelectorAll('[data-theme-option]'));
   const themeColor = document.querySelector('meta[name="theme-color"]');
   const themeKey = 'rental-os-theme';
@@ -599,8 +602,8 @@ html[data-theme="dark"] .footer-nav a:hover{color:#75b8ff}
     const nextPreference = Object.prototype.hasOwnProperty.call(labels, preference) ? preference : 'system';
     root.dataset.themePreference = nextPreference;
     root.dataset.theme = getEffectiveTheme(nextPreference);
-    label.textContent = labels[nextPreference];
     toggle.setAttribute('aria-label', `选择网站主题，当前${labels[nextPreference]}`);
+    toggle.setAttribute('title', `当前${labels[nextPreference]}，点击选择主题`);
     options.forEach((option) => {
       option.setAttribute('aria-checked', String(option.dataset.themeOption === nextPreference));
     });
