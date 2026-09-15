@@ -19,7 +19,7 @@
 <meta property="og:image:alt" content="Rental OS 租赁业务管理平台" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="2880" />
-<meta property="og:image:height" content="1240" />
+<meta property="og:image:height" content="990" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Rental OS｜新一代租赁业务管理平台" />
 <meta name="twitter:description" content="一套系统连接资产、订单、定价、履约与客户，帮助租赁企业更高效地经营多品类业务。" />
@@ -136,10 +136,10 @@ html[data-theme="dark"] .theme-icon svg.theme-icon-moon{display:block}
 .btn-outline{height:38px;background:#fff;color:#0968ef;border:1.5px solid #0a73ff;box-shadow:0 4px 10px rgba(18,96,203,.05)}
 
 /* Hero */
-.hero{position:relative;min-height:clamp(560px,43vw,660px);height:clamp(560px,43vw,660px);background:linear-gradient(180deg,#f6fbff 0%,#eef8ff 52%,#e5f3ff 100%);overflow:visible}
+.hero{position:relative;min-height:clamp(560px,43vw,660px);height:clamp(560px,43vw,660px);background:#eaf4ff;overflow:visible}
 .hero:before,.hero:after{display:none}
 .hero-backgrounds{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-.hero-background{position:absolute;inset:0;background-position:center center;background-size:auto 100%;background-repeat:no-repeat;opacity:0;transition:opacity .65s ease}
+.hero-background{position:absolute;inset:0;background-position:center center;background-size:cover;background-repeat:no-repeat;opacity:0;transition:opacity .65s ease}
 .hero-background.is-active{opacity:1}
 .hero .container{position:relative;z-index:2;height:100%;min-height:100%;padding:64px 0 48px;display:flex;align-items:center}
 .hero-copy{position:relative;z-index:3;width:35%;min-width:350px}
@@ -346,7 +346,7 @@ html[data-theme="dark"] .footer-nav a:hover{color:#75b8ff}
 
 /* responsive */
 @media (min-width:901px) and (max-width:1180px){
-  /* At narrow desktop widths the artwork must still cover the full stage;
+  /* At narrow desktop widths the full-bleed artwork still covers the stage;
      the copy column is narrowed at the same breakpoint to keep the two
      visual regions separate until the mobile layout takes over. */
   .hero-background{background-size:cover;background-position:20% center}
