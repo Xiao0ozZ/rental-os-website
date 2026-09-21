@@ -565,6 +565,9 @@
         padding: 0 0 42px;
       }
       .cta-inner {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
         min-height: 116px;
         border-radius: 14px;
         background: var(--blue) url("assets/cta-mountain.png") center/cover
@@ -576,6 +579,18 @@
         gap: 26px;
         padding: 24px 40px;
         box-shadow: none;
+      }
+      html[data-theme="dark"] .cta-inner::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background: rgba(0, 0, 0, 0.34);
+      }
+      .cta-inner > * {
+        position: relative;
+        z-index: 1;
       }
       .cta h2 {
         font-size: 28px;
