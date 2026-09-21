@@ -310,6 +310,20 @@
       html[data-theme="dark"] .hero {
         background: #000;
       }
+      html[data-theme="dark"] .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.72) 0%,
+          rgba(0, 0, 0, 0.62) 34%,
+          rgba(0, 0, 0, 0.42) 58%,
+          rgba(0, 0, 0, 0.25) 100%
+        );
+      }
       .hero-inner {
         position: relative;
         z-index: 2;
@@ -801,6 +815,14 @@
         }
         .hero-slide {
           object-position: 67% center;
+        }
+        html[data-theme="dark"] .hero::after {
+          background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.72) 0%,
+            rgba(0, 0, 0, 0.58) 58%,
+            rgba(0, 0, 0, 0.34) 100%
+          );
         }
         .hero-inner {
           align-items: flex-start;
