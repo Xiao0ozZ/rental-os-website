@@ -956,7 +956,7 @@
           ><img src="assets/logo-primary-with-tagline.png" alt="Rental OS"
         /></a>
         <nav class="nav">
-          <a href="#foundation">产品</a><a href="#solutions">解决方案</a
+          <a href="#solutions">行业方案</a><a href="#foundation">平台能力</a
           ><a href="#customers">客户案例</a
           ><span class="nav-placeholder">资源中心</span
           ><span class="nav-placeholder">关于我们</span>
@@ -982,7 +982,7 @@
         </div>
       </div>
       <nav class="mobile-nav" id="mobileNav">
-        <a href="#foundation">产品</a><a href="#solutions">解决方案</a
+        <a href="#solutions">行业方案</a><a href="#foundation">平台能力</a
         ><a href="#customers">客户案例</a
         ><span class="nav-placeholder">资源中心</span
         ><span class="nav-placeholder">关于我们</span>
@@ -1482,6 +1482,8 @@
         客户案例: "Customers",
         资源中心: "Resources",
         关于我们: "About",
+        行业方案: "Industry solutions",
+        平台能力: "Platform capabilities",
         预约演示: "Book a Demo",
         "Rental OS – 行业解决方案": "Rental OS – Industry Solutions",
         面向: "Rental solutions for ",
@@ -1760,7 +1762,12 @@
       let scrollTicking = false;
       function updateActiveNavigation() {
         siteHeader.classList.toggle("is-scrolled", window.scrollY > 0);
-        const marker = window.scrollY + 170;
+        const atBottom =
+          window.scrollY + window.innerHeight >=
+          document.documentElement.scrollHeight - 2;
+        const marker = atBottom
+          ? document.documentElement.scrollHeight
+          : window.scrollY + 120;
         let current = null;
         navSections.forEach((section) => {
           const element = document.getElementById(section.id);
