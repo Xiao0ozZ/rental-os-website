@@ -106,6 +106,9 @@
         color: inherit;
         text-decoration: none;
       }
+      section[id] {
+        scroll-margin-top: 98px;
+      }
       button {
         font: inherit;
       }
@@ -115,12 +118,55 @@
       }
       .site-header {
         height: 76px;
-        position: sticky;
+        position: fixed;
         top: 0;
+        left: 0;
+        right: 0;
         z-index: 50;
-        background: var(--header);
-        backdrop-filter: blur(15px);
-        border-bottom: 1px solid var(--line);
+        background: transparent;
+        border: 1px solid transparent;
+        transition:
+          width 0.32s ease,
+          height 0.32s ease,
+          top 0.32s ease,
+          left 0.32s ease,
+          right 0.32s ease,
+          border-radius 0.32s ease,
+          background 0.32s ease,
+          border-color 0.32s ease,
+          box-shadow 0.32s ease,
+          backdrop-filter 0.32s ease;
+      }
+      .site-header.is-scrolled {
+        width: min(1180px, calc(100% - 48px));
+        height: 64px;
+        top: 14px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        border-radius: 22px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.78),
+          rgba(255, 255, 255, 0.58)
+        );
+        backdrop-filter: blur(22px) saturate(145%);
+        -webkit-backdrop-filter: blur(22px) saturate(145%);
+        border-color: rgba(255, 255, 255, 0.76);
+        box-shadow:
+          0 14px 34px rgba(7, 26, 70, 0.13),
+          inset 0 1px 0 rgba(255, 255, 255, 0.78);
+      }
+      html[data-theme="dark"] .site-header.is-scrolled {
+        background: linear-gradient(
+          180deg,
+          rgba(17, 40, 67, 0.84),
+          rgba(7, 21, 38, 0.68)
+        );
+        border-color: rgba(164, 202, 244, 0.22);
+        box-shadow:
+          0 14px 34px rgba(0, 0, 0, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.08);
       }
       .header-inner {
         height: 100%;
@@ -128,8 +174,16 @@
         grid-template-columns: 220px 1fr 220px;
         align-items: center;
       }
+      .site-header.is-scrolled .header-inner {
+        width: 100%;
+        max-width: none;
+        padding: 0 16px;
+      }
       .brand img {
         width: 168px;
+      }
+      .site-header.is-scrolled .brand img {
+        width: 150px;
       }
       .nav {
         display: flex;
@@ -143,6 +197,9 @@
         display: grid;
         place-items: center;
         position: relative;
+      }
+      .site-header.is-scrolled .nav a {
+        height: 64px;
       }
       .nav .active {
         color: var(--blue);
@@ -197,7 +254,7 @@
       }
       .hero {
         position: relative;
-        min-height: 520px;
+        min-height: 596px;
         overflow: hidden;
         background: #eef7ff;
       }
@@ -243,7 +300,8 @@
       .hero-inner {
         position: relative;
         z-index: 2;
-        min-height: 520px;
+        min-height: 596px;
+        padding-top: 76px;
         display: flex;
         align-items: center;
       }
@@ -625,11 +683,27 @@
         .site-header {
           height: 66px;
         }
+        .site-header.is-scrolled {
+          width: calc(100% - 20px);
+          height: 56px;
+          top: 10px;
+          border-radius: 18px;
+        }
+        section[id] {
+          scroll-margin-top: 84px;
+        }
         .header-inner {
           grid-template-columns: 1fr auto;
         }
+        .site-header.is-scrolled .header-inner {
+          height: 56px;
+          padding: 0 10px;
+        }
         .brand img {
           width: 145px;
+        }
+        .site-header.is-scrolled .brand img {
+          width: 136px;
         }
         .nav,
         .theme {
@@ -661,9 +735,12 @@
           padding: 10px 3px;
           font-weight: 800;
         }
-        .hero,
+        .hero {
+          min-height: 706px;
+        }
         .hero-inner {
-          min-height: 640px;
+          min-height: 706px;
+          padding-top: 66px;
         }
         .hero-slide {
           object-position: 67% center;
@@ -742,7 +819,7 @@
     </style>
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header" id="siteHeader">
       <div class="shell header-inner">
         <a class="brand" href="#top"
           ><img src="assets/logo-primary-with-tagline.png" alt="Rental OS"
@@ -1441,9 +1518,11 @@
         { id: "resources", nav: "#resources" },
         { id: "about", nav: "#about" },
       ];
+      const siteHeader = document.getElementById("siteHeader");
       const navLinks = document.querySelectorAll(".nav a, .mobile-nav a");
       let scrollTicking = false;
       function updateActiveNavigation() {
+        siteHeader.classList.toggle("is-scrolled", window.scrollY > 28);
         const marker = window.scrollY + 170;
         let current = null;
         navSections.forEach((section) => {
