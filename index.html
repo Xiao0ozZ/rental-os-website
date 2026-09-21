@@ -691,12 +691,90 @@
         border: 1px solid var(--line);
         border-radius: 9px;
         background: var(--soft);
-        cursor: default;
+        color: var(--ink);
+        cursor: pointer;
       }
       .social-button .ui-icon {
         width: 19px;
         height: 19px;
         color: var(--icon);
+      }
+      .social-button:hover {
+        background: var(--card);
+      }
+      .qr-modal[hidden] {
+        display: none;
+      }
+      .qr-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+      .qr-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.52);
+      }
+      .qr-dialog {
+        position: relative;
+        width: min(360px, 100%);
+        padding: 26px 24px 24px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: var(--card);
+        color: var(--ink);
+        text-align: center;
+      }
+      .qr-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 32px;
+        height: 32px;
+        display: grid;
+        place-items: center;
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: transparent;
+        color: var(--ink);
+        cursor: pointer;
+      }
+      .qr-close .ui-icon {
+        width: 16px;
+        height: 16px;
+        color: currentColor;
+      }
+      .qr-platform {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .qr-dialog h2 {
+        margin: 3px 0 0;
+        font-size: 22px;
+        line-height: 1.3;
+        font-weight: 600;
+      }
+      .qr-dialog img {
+        width: 220px;
+        height: 220px;
+        margin: 18px auto 14px;
+        padding: 8px;
+        border: 1px solid var(--line);
+        background: #fff;
+        object-fit: contain;
+      }
+      .qr-hint {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      body.qr-modal-open {
+        overflow: hidden;
       }
       .footer-col h3 {
         font-size: 14px;
@@ -1366,8 +1444,10 @@
               <button
                 class="social-button"
                 type="button"
-                title="微信（即将开放）"
-                aria-label="微信（即将开放）"
+                data-social="wechat"
+                title="打开微信二维码"
+                aria-label="打开微信二维码"
+                aria-haspopup="dialog"
               >
                 <iconify-icon
                   class="ui-icon"
@@ -1378,8 +1458,10 @@
               <button
                 class="social-button"
                 type="button"
-                title="QQ（即将开放）"
-                aria-label="QQ（即将开放）"
+                data-social="qq"
+                title="打开 QQ 二维码"
+                aria-label="打开 QQ 二维码"
+                aria-haspopup="dialog"
               >
                 <iconify-icon
                   class="ui-icon"
@@ -1459,6 +1541,27 @@
         </div>
       </div>
     </footer>
+    <div class="qr-modal" id="qrModal" hidden>
+      <div class="qr-modal-backdrop" data-qr-close></div>
+      <div
+        class="qr-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="qrModalTitle"
+      >
+        <button class="qr-close" id="qrModalClose" type="button" aria-label="关闭二维码">
+          <iconify-icon
+            class="ui-icon"
+            icon="ant-design:close-outlined"
+            aria-hidden="true"
+          ></iconify-icon>
+        </button>
+        <p class="qr-platform" id="qrModalPlatform">微信</p>
+        <h2 id="qrModalTitle">微信二维码</h2>
+        <img id="qrModalImage" src="assets/qrcode-wechat.svg" alt="微信二维码" />
+        <p class="qr-hint" id="qrModalHint">使用微信扫描二维码</p>
+      </div>
+    </div>
     <script>
       const heroSlides = [...document.querySelectorAll(".hero-slide")];
       let heroActive = 0;
@@ -1661,7 +1764,82 @@
       const languageTrigger = document.getElementById("languageTrigger");
       const languageCurrent = document.getElementById("languageCurrent");
       const languageMenu = document.getElementById("languageMenu");
+      const footerSocialButtons = document.querySelectorAll(
+        ".socials .social-button",
+      );
+      const qrModal = document.getElementById("qrModal");
+      const qrModalClose = document.getElementById("qrModalClose");
+      const qrModalPlatform = document.getElementById("qrModalPlatform");
+      const qrModalTitle = document.getElementById("qrModalTitle");
+      const qrModalImage = document.getElementById("qrModalImage");
+      const qrModalHint = document.getElementById("qrModalHint");
+      let activeQrPlatform = "wechat";
       let activeLanguage = "zh";
+      const qrCopy = {
+        zh: {
+          wechat: {
+            platform: "微信",
+            title: "微信二维码",
+            hint: "使用微信扫描二维码",
+            alt: "微信二维码",
+          },
+          qq: {
+            platform: "QQ",
+            title: "QQ 二维码",
+            hint: "使用 QQ 扫描二维码",
+            alt: "QQ 二维码",
+          },
+        },
+        en: {
+          wechat: {
+            platform: "WeChat",
+            title: "WeChat QR code",
+            hint: "Scan this QR code with WeChat",
+            alt: "WeChat QR code",
+          },
+          qq: {
+            platform: "QQ",
+            title: "QQ QR code",
+            hint: "Scan this QR code with QQ",
+            alt: "QQ QR code",
+          },
+        },
+      };
+      function updateQrModalCopy() {
+        const copy = qrCopy[activeLanguage][activeQrPlatform];
+        qrModalPlatform.textContent = copy.platform;
+        qrModalTitle.textContent = copy.title;
+        qrModalHint.textContent = copy.hint;
+        qrModalImage.alt = copy.alt;
+        qrModalClose.setAttribute(
+          "aria-label",
+          activeLanguage === "en" ? "Close QR code" : "关闭二维码",
+        );
+      }
+      function openQrModal(platform) {
+        activeQrPlatform = platform === "qq" ? "qq" : "wechat";
+        qrModalImage.src = `assets/qrcode-${activeQrPlatform}.svg`;
+        updateQrModalCopy();
+        qrModal.hidden = false;
+        document.body.classList.add("qr-modal-open");
+        qrModalClose.focus();
+      }
+      function closeQrModal() {
+        qrModal.hidden = true;
+        document.body.classList.remove("qr-modal-open");
+      }
+      footerSocialButtons.forEach((button) => {
+        button.addEventListener("click", () => openQrModal(button.dataset.social));
+      });
+      qrModalClose.addEventListener("click", closeQrModal);
+      qrModal.addEventListener("click", (event) => {
+        if (event.target === qrModal || event.target.hasAttribute("data-qr-close")) {
+          closeQrModal();
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !qrModal.hidden) closeQrModal();
+      });
       const translatableNodes = [];
       const walker = document.createTreeWalker(
         document.body,
@@ -1703,21 +1881,21 @@
           "aria-label",
           isEnglish ? "Social contacts" : "社交联系方式",
         );
-        const socialButtons = socialGroup.querySelectorAll("button");
-        socialButtons[0].setAttribute(
+        footerSocialButtons[0].setAttribute(
           "aria-label",
-          isEnglish ? "WeChat (coming soon)" : "微信（即将开放）",
+          isEnglish ? "Open WeChat QR code" : "打开微信二维码",
         );
-        socialButtons[0].title = isEnglish
-          ? "WeChat (coming soon)"
-          : "微信（即将开放）";
-        socialButtons[1].setAttribute(
+        footerSocialButtons[0].title = isEnglish
+          ? "Open WeChat QR code"
+          : "打开微信二维码";
+        footerSocialButtons[1].setAttribute(
           "aria-label",
-          isEnglish ? "QQ (coming soon)" : "QQ（即将开放）",
+          isEnglish ? "Open QQ QR code" : "打开 QQ 二维码",
         );
-        socialButtons[1].title = isEnglish
-          ? "QQ (coming soon)"
-          : "QQ（即将开放）";
+        footerSocialButtons[1].title = isEnglish
+          ? "Open QQ QR code"
+          : "打开 QQ 二维码";
+        updateQrModalCopy();
         document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
           const isExpert = link.closest(".cta");
           const subject = isEnglish
