@@ -1800,12 +1800,10 @@
         }
       });
       const systemLanguage = () => {
-        const languages = navigator.languages?.length
-          ? navigator.languages
-          : [navigator.language];
-        return languages.some((language) =>
-          String(language).toLowerCase().startsWith("en"),
-        )
+        const primaryLanguage = String(
+          navigator.languages?.[0] || navigator.language || "",
+        ).toLowerCase();
+        return primaryLanguage.startsWith("en")
           ? "en"
           : "zh";
       };
