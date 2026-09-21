@@ -307,29 +307,6 @@
       .hero-slide.active {
         opacity: 1;
       }
-      .hero:after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.99),
-          rgba(255, 255, 255, 0.95) 40%,
-          rgba(255, 255, 255, 0.42) 55%,
-          rgba(255, 255, 255, 0.04) 76%,
-          transparent
-        );
-        z-index: 1;
-      }
-      html[data-theme="dark"] .hero:after {
-        background: linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0.99),
-          rgba(0, 0, 0, 0.94) 40%,
-          rgba(0, 0, 0, 0.48) 58%,
-          rgba(0, 0, 0, 0.06) 80%
-        );
-      }
       html[data-theme="dark"] .hero {
         background: #000;
       }
@@ -785,14 +762,6 @@
         }
         .hero-slide {
           object-position: 67% center;
-        }
-        .hero:after {
-          background: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.99),
-            rgba(255, 255, 255, 0.95) 57%,
-            rgba(255, 255, 255, 0.28)
-          );
         }
         .hero-inner {
           align-items: flex-start;
