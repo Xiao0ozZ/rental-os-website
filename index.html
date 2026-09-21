@@ -280,19 +280,30 @@
         overflow: hidden;
         background: #fff;
       }
-      .hero-media,
-      .hero-slide {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-      }
-      .hero-slide {
-        object-fit: cover;
-        object-position: left center;
-        opacity: 0;
-        transition: opacity 0.8s;
-      }
+  .hero-media {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border: 0;
+    outline: 0;
+  }
+  .hero-media[hidden] {
+    display: none;
+  }
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: left center;
+    opacity: 0;
+    transition: opacity 0.8s;
+    border: 0;
+    outline: 0;
+  }
       .hero-slide.active {
         opacity: 1;
       }
@@ -895,17 +906,7 @@
     </header>
     <main id="top">
       <section class="hero">
-        <div class="hero-media">
-          <img
-            class="hero-slide active"
-            src="assets/hero-solutions-neutral.png"
-            alt=""
-          /><img
-            class="hero-slide"
-            src="assets/hero-background.png"
-            alt=""
-          /><img class="hero-slide" src="assets/hero-background2.png" alt="" />
-        </div>
+    <div class="hero-media" id="heroMedia" aria-hidden="true" hidden></div>
         <div class="shell hero-inner">
           <div class="hero-copy">
             <div class="eyebrow">Rental OS – 行业解决方案</div>
@@ -1322,17 +1323,78 @@
       </div>
     </footer>
     <script>
-      const slides = [...document.querySelectorAll(".hero-slide")];
-      let active = 0;
-      if (
-        slides.length > 1 &&
-        !matchMedia("(prefers-reduced-motion:reduce)").matches
-      )
-        setInterval(() => {
-          slides[active].classList.remove("active");
-          active = (active + 1) % slides.length;
-          slides[active].classList.add("active");
-        }, 5600);
+      const heroMedia = document.getElementById("heroMedia");
+      let heroSlides = [];
+      let heroActive = 0;
+      let heroTimer;
+
+      const verifyImage = async (src) => {
+        try {
+          const response = await fetch(src, {
+            method: "HEAD",
+            cache: "no-store",
+          });
+          return response.ok ? src : null;
+        } catch {
+          return null;
+        }
+      };
+
+      const loadHeroCarousel = async () => {
+        let candidates = [];
+        try {
+          const response = await fetch("assets/hero-slides.json", {
+            cache: "no-store",
+          });
+          if (response.ok) {
+            const manifest = await response.json();
+            candidates = Array.isArray(manifest.slides)
+              ? manifest.slides
+              : [];
+          }
+        } catch {
+          candidates = [];
+        }
+
+        const validSlides = [];
+        for (const candidate of candidates.slice(0, 3)) {
+          if (typeof candidate !== "string") continue;
+          const src = candidate.startsWith("assets/")
+            ? candidate
+            : `assets/${candidate}`;
+          const validSrc = await verifyImage(src);
+          if (validSrc) validSlides.push(validSrc);
+        }
+
+        if (!validSlides.length) return;
+
+        validSlides.forEach((src, index) => {
+          const image = document.createElement("img");
+          image.className = `hero-slide${index === 0 ? " active" : ""}`;
+          image.src = src;
+          image.alt = "";
+          image.decoding = "async";
+          image.loading = index === 0 ? "eager" : "lazy";
+          image.setAttribute("aria-hidden", "true");
+          heroMedia.append(image);
+        });
+
+        heroSlides = [...heroMedia.querySelectorAll(".hero-slide")];
+        heroMedia.hidden = false;
+
+        if (
+          heroSlides.length > 1 &&
+          !matchMedia("(prefers-reduced-motion:reduce)").matches
+        ) {
+          heroTimer = setInterval(() => {
+            heroSlides[heroActive].classList.remove("active");
+            heroActive = (heroActive + 1) % heroSlides.length;
+            heroSlides[heroActive].classList.add("active");
+          }, 5600);
+        }
+      };
+
+      loadHeroCarousel();
       const menu = document.getElementById("menu"),
         mobile = document.getElementById("mobileNav");
       menu.onclick = () => mobile.classList.toggle("open");
