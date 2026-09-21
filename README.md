@@ -18,7 +18,7 @@
 
 - `index.html`：官网页面、样式与 SEO 信息
 - `assets/`：官网使用的本地图片素材
-- Hero 图片按 `hero-<name>.<png|jpg|jpeg|webp>` 命名；运行 `scripts/generate-hero-manifest.ps1` 后最多加入 3 张。页面运行时会校验清单中的文件，已删除的图片自动跳过。
+- Hero 当前固定使用 `assets/hero-solutions-neutral.png`，不启用轮播脚本，也不保留其他背景图引用。
 - `robots.txt` / `sitemap.xml`：搜索引擎抓取规则与站点地图
 - `favicon.ico`：浏览器标签页图标（来自项目品牌资源）
 - `.github/workflows/pages.yml`：GitHub Pages 自动发布工作流
