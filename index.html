@@ -214,13 +214,15 @@
         font-size: 15px;
         font-weight: 400;
       }
-      .nav a {
+      .nav a,
+      .nav .nav-placeholder {
         height: 67px;
         display: grid;
         place-items: center;
         position: relative;
       }
-      .site-header.is-scrolled .nav a {
+      .site-header.is-scrolled .nav a,
+      .site-header.is-scrolled .nav .nav-placeholder {
         height: 67px;
       }
       .nav .active {
@@ -852,7 +854,8 @@
           gap: 5px;
           border-bottom: 1px solid var(--line);
         }
-        .mobile-nav a {
+        .mobile-nav a,
+        .mobile-nav .nav-placeholder {
           padding: 10px 3px;
           font-weight: 800;
         }
@@ -954,8 +957,9 @@
         /></a>
         <nav class="nav">
           <a href="#foundation">产品</a><a href="#solutions">解决方案</a
-          ><a href="#customers">客户案例</a><a href="#resources">资源中心</a
-          ><a href="#about">关于我们</a>
+          ><a href="#customers">客户案例</a
+          ><span class="nav-placeholder">资源中心</span
+          ><span class="nav-placeholder">关于我们</span>
         </nav>
         <div class="header-actions">
           <button class="theme" id="theme" aria-label="切换颜色模式">
@@ -979,8 +983,9 @@
       </div>
       <nav class="mobile-nav" id="mobileNav">
         <a href="#foundation">产品</a><a href="#solutions">解决方案</a
-        ><a href="#customers">客户案例</a><a href="#resources">资源中心</a
-        ><a href="#about">关于我们</a>
+        ><a href="#customers">客户案例</a
+        ><span class="nav-placeholder">资源中心</span
+        ><span class="nav-placeholder">关于我们</span>
       </nav>
     </header>
     <main id="top">
@@ -1746,11 +1751,9 @@
 
       const navSections = [
         { id: "solutions", nav: "#solutions" },
-        { id: "scenarios", nav: "#foundation" },
+        { id: "scenarios", nav: "#solutions" },
         { id: "foundation", nav: "#foundation" },
         { id: "customers", nav: "#customers" },
-        { id: "resources", nav: "#resources" },
-        { id: "about", nav: "#about" },
       ];
       const siteHeader = document.getElementById("siteHeader");
       const navLinks = document.querySelectorAll(".nav a, .mobile-nav a");
