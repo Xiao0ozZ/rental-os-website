@@ -197,7 +197,7 @@
         width: min(1480px, calc(100% - 16px));
         padding: 8px 8px 8px 24px;
         display: grid;
-        grid-template-columns: 220px 1fr 220px;
+        grid-template-columns: 220px 1fr 260px;
         align-items: center;
       }
       .site-header.is-scrolled .header-inner {
@@ -244,6 +244,32 @@
         justify-content: flex-end;
         align-items: center;
         gap: 12px;
+      }
+      .language-switch {
+        width: 38px;
+        height: 38px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        padding: 0;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: var(--card);
+        color: var(--ink);
+        line-height: 1;
+        cursor: pointer;
+      }
+      .language-switch .ui-icon {
+        width: 16px;
+        height: 16px;
+        color: currentColor;
+      }
+      .language-switch .language-code {
+        display: none;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
       }
       .theme {
         width: 38px;
@@ -829,6 +855,7 @@
           width: 145px;
         }
         .nav,
+        .language-switch,
         .theme {
           display: none;
         }
@@ -962,6 +989,20 @@
           ><span class="nav-placeholder">关于我们</span>
         </nav>
         <div class="header-actions">
+          <button
+            class="language-switch"
+            id="headerLanguageSwitch"
+            type="button"
+            aria-label="切换语言"
+            title="切换语言"
+          >
+            <iconify-icon
+              class="ui-icon"
+              icon="ant-design:global-outlined"
+              aria-hidden="true"
+            ></iconify-icon>
+            <span class="language-code" id="headerLanguageCode">中</span>
+          </button>
           <button class="theme" id="theme" aria-label="切换颜色模式">
             <iconify-icon
               class="ui-icon"
@@ -1612,10 +1653,15 @@
       };
 
       const languageKey = "rental-os-language";
+      const headerLanguageSwitch = document.getElementById(
+        "headerLanguageSwitch",
+      );
+      const headerLanguageCode = document.getElementById("headerLanguageCode");
       const languagePicker = document.querySelector(".language-picker");
       const languageTrigger = document.getElementById("languageTrigger");
       const languageCurrent = document.getElementById("languageCurrent");
       const languageMenu = document.getElementById("languageMenu");
+      let activeLanguage = "zh";
       const translatableNodes = [];
       const walker = document.createTreeWalker(
         document.body,
@@ -1635,8 +1681,9 @@
         const zh = node.nodeValue.replace(/\s+/g, " ").trim();
         translatableNodes.push({ node, zh, en: translations[zh] });
       }
-      function setLanguage(language) {
-        const isEnglish = language === "en";
+      function setLanguage(language, persist = false) {
+        activeLanguage = language === "en" ? "en" : "zh";
+        const isEnglish = activeLanguage === "en";
         translatableNodes.forEach(({ node, zh, en }) => {
           node.nodeValue = isEnglish ? en : zh;
         });
@@ -1699,6 +1746,12 @@
               : image.dataset.zhAlt;
         });
         languageCurrent.textContent = isEnglish ? "English" : "简体中文";
+        headerLanguageCode.textContent = isEnglish ? "EN" : "中";
+        headerLanguageSwitch.setAttribute(
+          "aria-label",
+          isEnglish ? "Switch language" : "切换语言",
+        );
+        headerLanguageSwitch.title = isEnglish ? "Switch language" : "切换语言";
         languageTrigger.setAttribute(
           "aria-label",
           isEnglish ? "Choose language" : "选择语言",
@@ -1713,16 +1766,21 @@
             String(button.dataset.language === language),
           );
         });
-        try {
-          localStorage.setItem(languageKey, language);
-        } catch (e) {}
+        if (persist) {
+          try {
+            localStorage.setItem(languageKey, activeLanguage);
+          } catch (e) {}
+        }
       }
       languageMenu.querySelectorAll("[data-language]").forEach((button) => {
         button.addEventListener("click", () => {
-          setLanguage(button.dataset.language);
+          setLanguage(button.dataset.language, true);
           languageMenu.hidden = true;
           languageTrigger.setAttribute("aria-expanded", "false");
         });
+      });
+      headerLanguageSwitch.addEventListener("click", () => {
+        setLanguage(activeLanguage === "en" ? "zh" : "en", true);
       });
       languageTrigger.addEventListener("click", () => {
         const open = languageMenu.hidden;
@@ -1741,13 +1799,20 @@
           languageTrigger.setAttribute("aria-expanded", "false");
         }
       });
-      let savedLanguage =
-        new URLSearchParams(location.search).get("lang") || "zh";
+      const systemLanguage = () => {
+        const languages = navigator.languages?.length
+          ? navigator.languages
+          : [navigator.language];
+        return languages.some((language) =>
+          String(language).toLowerCase().startsWith("en"),
+        )
+          ? "en"
+          : "zh";
+      };
+      let savedLanguage = new URLSearchParams(location.search).get("lang");
       try {
         savedLanguage =
-          new URLSearchParams(location.search).get("lang") ||
-          localStorage.getItem(languageKey) ||
-          "zh";
+          savedLanguage || localStorage.getItem(languageKey) || systemLanguage();
       } catch (e) {}
       setLanguage(savedLanguage === "en" ? "en" : "zh");
 
