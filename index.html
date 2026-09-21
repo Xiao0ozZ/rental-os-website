@@ -47,11 +47,17 @@
     <title>Rental OS｜面向多行业的租赁解决方案</title>
     <script>
       (() => {
-        document.documentElement.dataset.theme = matchMedia(
-          "(prefers-color-scheme:dark)",
-        ).matches
+        let savedTheme = "";
+        try {
+          savedTheme = localStorage.getItem("rental-os-theme") || "";
+        } catch (e) {}
+        const systemTheme = matchMedia("(prefers-color-scheme:dark)").matches
           ? "dark"
           : "light";
+        document.documentElement.dataset.theme =
+          savedTheme === "dark" || savedTheme === "light"
+            ? savedTheme
+            : systemTheme;
       })();
     </script>
     <script type="application/ld+json">
@@ -1443,21 +1449,26 @@
         image.replaceWith(icon);
       });
       const theme = document.getElementById("theme"),
+        themeKey = "rental-os-theme",
         icons = {
           light: "ant-design:sun-outlined",
           dark: "ant-design:moon-outlined",
         };
-      let activeTheme = matchMedia("(prefers-color-scheme:dark)").matches
-        ? "dark"
-        : "light";
-      function apply(p) {
+      let activeTheme =
+        document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+      function apply(p, persist = false) {
         activeTheme = p;
         document.documentElement.dataset.theme = p;
         theme.querySelector("iconify-icon").setAttribute("icon", icons[p]);
+        if (persist) {
+          try {
+            localStorage.setItem(themeKey, p);
+          } catch (e) {}
+        }
       }
       apply(activeTheme);
       theme.onclick = () => {
-        apply(activeTheme === "dark" ? "light" : "dark");
+        apply(activeTheme === "dark" ? "light" : "dark", true);
       };
 
       const translations = {
