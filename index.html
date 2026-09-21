@@ -20,6 +20,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"
+      defer
+    ></script>
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Rental OS｜面向多行业的租赁解决方案" />
     <meta
@@ -71,6 +75,8 @@
         --text: #536987;
         --muted: #8494aa;
         --line: #dfeaf7;
+        --icon: #566474;
+        --icon-strong: #3d4a59;
         --soft: #ffffff;
         --card: #fff;
         --page: #fff;
@@ -82,6 +88,8 @@
         --text: #b8c7dd;
         --muted: #8da1bc;
         --line: #2a2a2a;
+        --icon: #c8d1dc;
+        --icon-strong: #e7edf4;
         --soft: #000000;
         --card: #000000;
         --page: #000000;
@@ -126,6 +134,14 @@
       }
       button {
         font: inherit;
+      }
+      .ui-icon,
+      iconify-icon {
+        display: block;
+        width: 1em;
+        height: 1em;
+        flex: none;
+        color: var(--icon);
       }
       .shell {
         width: min(1180px, calc(100% - 48px));
@@ -362,10 +378,10 @@
         align-items: center;
         gap: 7px;
       }
-      .proof img {
+      .proof .ui-icon {
         width: 18px;
         height: 18px;
-        object-fit: contain;
+        color: var(--icon-strong);
       }
       .section {
         padding: 54px 0;
@@ -436,10 +452,10 @@
         gap: 8px;
         align-items: center;
       }
-      .feature img {
+      .feature .ui-icon {
         width: 17px;
         height: 17px;
-        object-fit: contain;
+        color: var(--icon);
       }
       .compact-grid {
         display: grid;
@@ -459,14 +475,14 @@
         min-height: 142px;
         box-shadow: 0 9px 23px rgba(30, 85, 150, 0.06);
       }
-      .compact img {
+      .compact .ui-icon {
         grid-column: 1;
         grid-row: 1;
         align-self: center;
         width: 34px;
         height: 34px;
-        object-fit: contain;
         margin: 0;
+        color: var(--icon-strong);
       }
       .compact h3 {
         grid-column: 2;
@@ -599,13 +615,10 @@
         background: var(--soft);
         cursor: default;
       }
-      .social-button img {
+      .social-button .ui-icon {
         width: 19px;
         height: 19px;
-        opacity: 0.68;
-      }
-      html[data-theme="dark"] .social-button img {
-        filter: invert(1);
+        color: var(--icon);
       }
       .footer-col h3 {
         font-size: 14px;
@@ -636,27 +649,63 @@
       .legal-links {
         white-space: nowrap;
       }
-      .language-switch {
+      .language-picker {
+        position: relative;
+      }
+      .language-trigger {
+        min-height: 30px;
         display: inline-flex;
-        padding: 3px;
+        align-items: center;
+        gap: 7px;
+        padding: 0 9px 0 11px;
         border: 1px solid var(--line);
         border-radius: 8px;
         background: var(--soft);
-      }
-      .language-switch button {
-        min-height: 28px;
-        padding: 0 10px;
-        border: 0;
-        border-radius: 6px;
-        background: transparent;
-        color: var(--muted);
+        color: var(--text);
         font-size: 12px;
         cursor: pointer;
       }
-      .language-switch button.active {
+      .language-trigger .ui-icon {
+        width: 14px;
+        height: 14px;
+        color: currentColor;
+        transition: transform 0.2s ease;
+      }
+      .language-trigger[aria-expanded="true"] .ui-icon {
+        transform: rotate(180deg);
+      }
+      .language-menu {
+        position: absolute;
+        right: 0;
+        bottom: calc(100% + 8px);
+        z-index: 5;
+        min-width: 112px;
+        padding: 5px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
         background: var(--card);
-        color: var(--blue);
-        box-shadow: 0 2px 8px rgba(18, 72, 140, 0.12);
+        box-shadow: var(--shadow);
+      }
+      .language-menu[hidden] {
+        display: none;
+      }
+      .language-menu button {
+        display: block;
+        width: 100%;
+        min-height: 30px;
+        padding: 0 9px;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--text);
+        font-size: 12px;
+        text-align: left;
+        cursor: pointer;
+      }
+      .language-menu button:hover,
+      .language-menu button[aria-selected="true"] {
+        background: var(--soft);
+        color: var(--ink);
       }
       .menu,
       .mobile-nav {
@@ -840,12 +889,23 @@
           ><a href="#about">关于我们</a>
         </nav>
         <div class="header-actions">
-          <button class="theme" id="theme" aria-label="切换颜色模式">◐</button
+          <button class="theme" id="theme" aria-label="切换颜色模式">
+            <iconify-icon
+              class="ui-icon"
+              icon="ant-design:sun-outlined"
+              aria-hidden="true"
+            ></iconify-icon></button
           ><a
             class="btn primary"
             href="mailto:hello@rentalos.cn?subject=预约 Rental OS 演示"
             >预约演示</a
-          ><button class="menu" id="menu" aria-label="打开导航">☰</button>
+          ><button class="menu" id="menu" aria-label="打开导航">
+            <iconify-icon
+              class="ui-icon"
+              icon="ant-design:menu-outlined"
+              aria-hidden="true"
+            ></iconify-icon>
+          </button>
         </div>
       </div>
       <nav class="mobile-nav" id="mobileNav">
@@ -1192,7 +1252,11 @@
                 title="微信（即将开放）"
                 aria-label="微信（即将开放）"
               >
-                <img src="assets/icon-wechat.svg" alt="" />
+                <iconify-icon
+                  class="ui-icon"
+                  icon="ant-design:wechat-outlined"
+                  aria-hidden="true"
+                ></iconify-icon>
               </button>
               <button
                 class="social-button"
@@ -1200,7 +1264,11 @@
                 title="QQ（即将开放）"
                 aria-label="QQ（即将开放）"
               >
-                <img src="assets/icon-qq.svg" alt="" />
+                <iconify-icon
+                  class="ui-icon"
+                  icon="ant-design:qq-outlined"
+                  aria-hidden="true"
+                ></iconify-icon>
               </button>
             </div>
           </div>
@@ -1229,11 +1297,46 @@
           <span>© 2026 Rental OS. 保留所有权利。</span>
           <div class="footer-tools">
             <span class="legal-links">隐私政策　服务条款　网站地图</span>
-            <div class="language-switch" role="group" aria-label="Language">
-              <button type="button" data-language="zh" class="active">
-                简体中文
+            <div class="language-picker">
+              <button
+                class="language-trigger"
+                id="languageTrigger"
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-label="选择语言"
+              >
+                <span id="languageCurrent">简体中文</span>
+                <iconify-icon
+                  class="ui-icon"
+                  icon="ant-design:down-outlined"
+                  aria-hidden="true"
+                ></iconify-icon>
               </button>
-              <button type="button" data-language="en">English</button>
+              <div
+                class="language-menu"
+                id="languageMenu"
+                role="listbox"
+                aria-label="语言选项"
+                hidden
+              >
+                <button
+                  type="button"
+                  role="option"
+                  data-language="zh"
+                  aria-selected="true"
+                >
+                  简体中文
+                </button>
+                <button
+                  type="button"
+                  role="option"
+                  data-language="en"
+                  aria-selected="false"
+                >
+                  English
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1255,15 +1358,37 @@
         mobile = document.getElementById("mobileNav");
       menu.onclick = () => mobile.classList.toggle("open");
       mobile.onclick = () => mobile.classList.remove("open");
+      const iconMap = {
+        "feature-1.png": "ant-design:team-outlined",
+        "feature-2.png": "ant-design:box-plot-outlined",
+        "feature-3.png": "ant-design:file-text-outlined",
+        "feature-4.png": "ant-design:desktop-outlined",
+        "feature-5.png": "ant-design:setting-outlined",
+        "feature-6.png": "ant-design:bar-chart-outlined",
+      };
+      document.querySelectorAll('img[src^="assets/"]').forEach((image) => {
+        const file = image.getAttribute("src").split("/").pop();
+        const symbol = iconMap[file];
+        if (!symbol) return;
+        const icon = document.createElement("iconify-icon");
+        icon.setAttribute("class", "ui-icon");
+        icon.setAttribute("icon", symbol);
+        icon.setAttribute("aria-hidden", "true");
+        image.replaceWith(icon);
+      });
       const theme = document.getElementById("theme"),
         key = "rental-os-theme",
-        icons = { system: "◐", light: "☀", dark: "◒" };
+        icons = {
+          system: "ant-design:bulb-outlined",
+          light: "ant-design:sun-outlined",
+          dark: "ant-design:moon-outlined",
+        };
       function apply(p) {
         let d = matchMedia("(prefers-color-scheme:dark)").matches;
         document.documentElement.dataset.preference = p;
         document.documentElement.dataset.theme =
           p === "system" ? (d ? "dark" : "light") : p;
-        theme.textContent = icons[p];
+        theme.querySelector("iconify-icon").setAttribute("icon", icons[p]);
         try {
           localStorage.setItem(key, p);
         } catch (e) {}
@@ -1409,6 +1534,10 @@
       };
 
       const languageKey = "rental-os-language";
+      const languagePicker = document.querySelector(".language-picker");
+      const languageTrigger = document.getElementById("languageTrigger");
+      const languageCurrent = document.getElementById("languageCurrent");
+      const languageMenu = document.getElementById("languageMenu");
       const translatableNodes = [];
       const walker = document.createTreeWalker(
         document.body,
@@ -1491,24 +1620,48 @@
               ? altTranslations[image.dataset.zhAlt]
               : image.dataset.zhAlt;
         });
-        document.querySelectorAll("[data-language]").forEach((button) => {
-          button.classList.toggle(
-            "active",
-            button.dataset.language === language,
-          );
+        languageCurrent.textContent = isEnglish ? "English" : "简体中文";
+        languageTrigger.setAttribute(
+          "aria-label",
+          isEnglish ? "Choose language" : "选择语言",
+        );
+        languageMenu.setAttribute(
+          "aria-label",
+          isEnglish ? "Language options" : "语言选项",
+        );
+        languageMenu.querySelectorAll("[data-language]").forEach((button) => {
           button.setAttribute(
-            "aria-pressed",
-            button.dataset.language === language,
+            "aria-selected",
+            String(button.dataset.language === language),
           );
         });
         try {
           localStorage.setItem(languageKey, language);
         } catch (e) {}
       }
-      document.querySelectorAll("[data-language]").forEach((button) => {
-        button.addEventListener("click", () =>
-          setLanguage(button.dataset.language),
-        );
+      languageMenu.querySelectorAll("[data-language]").forEach((button) => {
+        button.addEventListener("click", () => {
+          setLanguage(button.dataset.language);
+          languageMenu.hidden = true;
+          languageTrigger.setAttribute("aria-expanded", "false");
+        });
+      });
+      languageTrigger.addEventListener("click", () => {
+        const open = languageMenu.hidden;
+        languageMenu.hidden = !open;
+        languageTrigger.setAttribute("aria-expanded", String(open));
+      });
+      document.addEventListener("click", (event) => {
+        if (!languagePicker.contains(event.target)) {
+          languageMenu.hidden = true;
+          languageTrigger.setAttribute("aria-expanded", "false");
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          languageMenu.hidden = true;
+          languageTrigger.setAttribute("aria-expanded", "false");
+        }
       });
       let savedLanguage =
         new URLSearchParams(location.search).get("lang") || "zh";
