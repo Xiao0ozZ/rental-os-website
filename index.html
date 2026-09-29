@@ -2,1500 +2,1465 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Rental OS 面向摄影器材、露营装备、车辆载具和工程设备等租赁企业，提供资产、订单、定价、履约、会员与经营分析的一体化 SaaS 解决方案。"
+      content="Rental OS 是面向多品类租赁业务的一体化经营平台，连接预约、订单、库存、门店、履约与结算。"
     />
-    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <title>Rental OS｜面向多品类租赁业务的经营平台</title>
     <link
-      rel="canonical"
-      href="https://xiao0ozz.github.io/rental-os-website/"
+      rel="icon"
+      href="assets/images/rentalos-icon-color.svg"
+      type="image/svg+xml"
     />
-    <link rel="icon" href="favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      href="assets/fonts/headline.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
-    <script
-      src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"
-      defer
-    ></script>
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Rental OS｜面向多行业的租赁解决方案" />
-    <meta
-      property="og:description"
-      content="覆盖摄影设备、露营装备、车辆载具、工程设备等多元租赁场景。"
+    <link
+      rel="preload"
+      href="assets/fonts/inter.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
-    <meta
-      property="og:image"
-      content="https://xiao0ozz.github.io/rental-os-website/assets/hero-solutions-neutral.png"
-    />
-    <meta
-      property="og:url"
-      content="https://xiao0ozz.github.io/rental-os-website/"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Rental OS｜面向多行业的租赁解决方案" />
-    <meta
-      name="twitter:image"
-      content="https://xiao0ozz.github.io/rental-os-website/assets/hero-solutions-neutral.png"
-    />
-    <title>Rental OS｜面向多行业的租赁解决方案</title>
-    <script>
-      (() => {
-        let savedTheme = "";
-        try {
-          savedTheme = localStorage.getItem("rental-os-theme") || "";
-        } catch (e) {}
-        const systemTheme = matchMedia("(prefers-color-scheme:dark)").matches
-          ? "dark"
-          : "light";
-        document.documentElement.dataset.theme =
-          savedTheme === "dark" || savedTheme === "light"
-            ? savedTheme
-            : systemTheme;
-      })();
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Rental OS",
-        "applicationCategory": "BusinessApplication",
-        "operatingSystem": "Web",
-        "url": "https://xiao0ozz.github.io/rental-os-website/",
-        "description": "面向多行业租赁企业的一体化 SaaS 运营管理平台。"
-      }
-    </script>
-    <style>
-      :root {
-        --blue: #007aff;
-        --ink: #000000;
-        --text: rgba(0, 0, 0, 0.72);
-        --muted: rgba(0, 0, 0, 0.52);
-        --line: rgba(0, 0, 0, 0.12);
-        --icon: var(--ink);
-        --icon-strong: var(--ink);
-        --soft: #ffffff;
-        --card: #ffffff;
-        --page: #ffffff;
-        --header: rgba(255, 255, 255, 0.86);
-        --shadow: none;
-      }
-      html[data-theme="dark"] {
-        --ink: #ffffff;
-        --text: rgba(255, 255, 255, 0.78);
-        --muted: rgba(255, 255, 255, 0.58);
-        --line: rgba(255, 255, 255, 0.18);
-        --icon: var(--ink);
-        --icon-strong: var(--ink);
-        --soft: #000000;
-        --card: #000000;
-        --page: #000000;
-        --header: rgba(0, 0, 0, 0.86);
-        --shadow: none;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        margin: 0;
-        background: var(--page);
-        color: var(--ink);
-        font-family:
-          Inter,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Helvetica Neue",
-          Arial,
-          "PingFang SC",
-          "Hiragino Sans GB",
-          "Microsoft YaHei",
-          "Noto Sans CJK SC",
-          "Noto Sans SC",
-          "Segoe UI",
-          sans-serif;
-        line-height: 1.6;
-      }
-      img {
-        display: block;
-        max-width: 100%;
-      }
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-      section[id] {
-        scroll-margin-top: 98px;
-      }
-      button {
-        font: inherit;
-      }
-      .ui-icon,
-      iconify-icon {
-        display: block;
-        width: 1em;
-        height: 1em;
-        flex: none;
-        color: var(--icon);
-      }
-      .shell {
-        width: min(1180px, calc(100% - 48px));
-        margin: auto;
-      }
-      .site-header {
-        height: 75px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 50;
-        background: transparent;
-      }
-      .site-header::before {
-        content: "";
-        position: absolute;
-        z-index: 0;
-        top: 8px;
-        right: max(8px, calc((100% - 1480px) / 2));
-        left: max(8px, calc((100% - 1480px) / 2));
-        height: 67px;
-        pointer-events: none;
-        border: 1px solid transparent;
-        border-radius: 18px;
-        background: transparent;
-        box-shadow: none;
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        transition:
-          background-color 0.2s cubic-bezier(0.4, 0, 1, 1),
-          border-color 0.2s cubic-bezier(0.4, 0, 1, 1);
-      }
-      .site-header.is-scrolled::before {
-        background: rgba(255, 255, 255, 0.6);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        border-color: rgba(0, 0, 0, 0.16);
-        box-shadow: none;
-      }
-      html[data-theme="dark"] .site-header.is-scrolled::before {
-        background: rgba(25, 25, 25, 0.6);
-        border-color: #352f3d;
-        box-shadow: none;
-      }
-      .header-inner {
-        height: 67px;
-        position: relative;
-        z-index: 1;
-        width: min(1480px, calc(100% - 16px));
-        padding: 8px 8px 8px 24px;
-        display: grid;
-        grid-template-columns: 220px 1fr 260px;
-        align-items: center;
-      }
-      .site-header.is-scrolled .header-inner {
-        height: 67px;
-        transform: none;
-      }
-      .brand img {
-        width: 168px;
-      }
-      .nav {
-        display: flex;
-        justify-content: center;
-        gap: 42px;
-        font-size: 15px;
-        font-weight: 400;
-      }
-      .nav a,
-      .nav .nav-placeholder {
-        height: 67px;
-        display: grid;
-        place-items: center;
-        position: relative;
-      }
-      .site-header.is-scrolled .nav a,
-      .site-header.is-scrolled .nav .nav-placeholder {
-        height: 67px;
-      }
-      .nav .active {
-        color: var(--blue);
-      }
-      .nav .active:after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 42px;
-        height: 3px;
-        border-radius: 3px;
-        background: var(--blue);
-        transform: translateX(-50%);
-      }
-      .header-actions {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 12px;
-      }
-      .language-switch {
-        width: 38px;
-        height: 38px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-        padding: 0;
-        border: 1px solid var(--line);
-        border-radius: 50%;
-        background: var(--card);
-        color: var(--ink);
-        line-height: 1;
-        cursor: pointer;
-      }
-      .language-switch .ui-icon {
-        width: 16px;
-        height: 16px;
-        color: currentColor;
-      }
-      .language-switch .language-code {
-        display: none;
-        font-size: 10px;
-        font-weight: 600;
-        letter-spacing: -0.02em;
-      }
-      .theme {
-        width: 38px;
-        height: 38px;
-        display: grid;
-        place-items: center;
-        padding: 0;
-        border: 1px solid var(--line);
-        border-radius: 50%;
-        background: var(--card);
-        color: var(--ink);
-        line-height: 0;
-        cursor: pointer;
-      }
-      .theme .ui-icon {
-        display: block;
-        width: 18px;
-        height: 18px;
-        color: currentColor;
-      }
-      .btn {
-        min-height: 44px;
-        padding: 0 24px;
-        border: 1px solid var(--blue);
-        border-radius: 9px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 600;
-        transition:
-          opacity 0.2s ease,
-          background-color 0.2s ease;
-      }
-      .primary {
-        background: var(--blue);
-        color: #fff;
-        box-shadow: none;
-      }
-      .secondary {
-        background: var(--card);
-      }
-      .btn:hover {
-        transform: none;
-        opacity: 0.86;
-      }
-      .hero {
-        position: relative;
-        min-height: 596px;
-        overflow: hidden;
-        background: #fff;
-      }
-  .hero-media {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    border: 0;
-    outline: 0;
-  }
-  .hero-media[hidden] {
-    display: none;
-  }
-  .hero-slide {
-    position: absolute;
-    inset: 0;
-    display: block;
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    object-fit: cover;
-    object-position: left center;
-    opacity: 0;
-    transition: opacity 0.8s;
-    border: 0;
-    outline: 0;
-  }
-      .hero-slide.active {
-        opacity: 1;
-      }
-      html[data-theme="dark"] .hero {
-        background: #000;
-      }
-      html[data-theme="dark"] .hero::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        pointer-events: none;
-        background: linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0.72) 0%,
-          rgba(0, 0, 0, 0.62) 34%,
-          rgba(0, 0, 0, 0.42) 58%,
-          rgba(0, 0, 0, 0.25) 100%
-        );
-      }
-      .hero-inner {
-        position: relative;
-        z-index: 2;
-        min-height: 596px;
-        padding-top: 76px;
-        display: flex;
-        align-items: center;
-      }
-      .hero-copy {
-        width: 510px;
-        padding: 42px 0;
-      }
-      .eyebrow {
-        font-size: 14px;
-        color: var(--blue);
-        font-weight: 600;
-        margin-bottom: 12px;
-      }
-      .hero h1 {
-        font-size: 47px;
-        line-height: 1.18;
-        letter-spacing: -1.5px;
-        margin: 0 0 17px;
-        font-weight: 800;
-      }
-      .hero h1 span {
-        color: var(--blue);
-      }
-      .hero-desc {
-        font-size: 18px;
-        line-height: 1.8;
-        color: var(--text);
-        margin: 0 0 25px;
-      }
-      .hero-buttons {
-        display: flex;
-        gap: 12px;
-        margin-bottom: 24px;
-      }
-      .proofs {
-        display: flex;
-        gap: 22px;
-        flex-wrap: wrap;
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--text);
-      }
-      .proof {
-        display: flex;
-        align-items: center;
-        gap: 7px;
-      }
-      .proof .ui-icon {
-        width: 18px;
-        height: 18px;
-        color: var(--icon-strong);
-      }
-      .section {
-        padding: 54px 0;
-      }
-      .soft {
-        background: var(--page);
-      }
-      .section-head {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        gap: 24px;
-        margin-bottom: 23px;
-      }
-      .section-title {
-        font-size: 31px;
-        line-height: 1.25;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        margin: 0;
-      }
-      .section-sub {
-        margin: 6px 0 0;
-        color: var(--text);
-        font-size: 15px;
-      }
-      .section-link {
-        color: var(--blue);
-        font-size: 14px;
-        font-weight: 600;
-      }
-      .industry-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 16px;
-      }
-      .industry-card {
-        display: flex;
-        flex-direction: column;
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        overflow: hidden;
-        box-shadow: none;
-      }
-      .industry-card > img {
-        display: block;
-        flex: none;
-        width: 100%;
-        height: 148px;
-        object-fit: cover;
-      }
-      .industry-body {
-        --industry-title-row: 34px;
-        --industry-description-row: 50px;
-        display: grid;
-        grid-template-rows:
-          var(--industry-title-row) var(--industry-description-row)
-          minmax(0, 1fr);
-        row-gap: 6px;
-        flex: 1;
-        min-height: 0;
-        padding: 15px 17px 17px;
-      }
-      html[lang="en"] .industry-body {
-        --industry-title-row: 52px;
-        --industry-description-row: 70px;
-      }
-      .industry-body h3 {
-        font-size: 20px;
-        line-height: 1.3;
-        font-weight: 500;
-        margin: 0;
-      }
-      .industry-body > p {
-        font-size: 14px;
-        line-height: 1.6;
-        color: var(--text);
-        margin: 0;
-      }
-      .features {
-        display: grid;
-        gap: 7px;
-        font-size: 13px;
-        color: var(--text);
-      }
-      .feature {
-        display: grid;
-        grid-template-columns: 18px minmax(0, 1fr);
-        column-gap: 8px;
-        align-items: start;
-      }
-      .feature .ui-icon {
-        width: 16px;
-        height: 16px;
-        margin-top: 2px;
-        color: var(--icon);
-      }
-      .compact-grid {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 12px;
-      }
-      .compact {
-        --compact-title-row: 34px;
-        display: grid;
-        grid-template-columns: 24px minmax(0, 1fr);
-        grid-template-rows: var(--compact-title-row) minmax(0, 1fr);
-        column-gap: 10px;
-        align-content: start;
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        padding: 15px;
-        min-height: 142px;
-        box-shadow: none;
-      }
-      html[lang="en"] .compact {
-        --compact-title-row: 48px;
-      }
-      .compact .ui-icon {
-        grid-column: 1;
-        grid-row: 1;
-        align-self: start;
-        width: 24px;
-        height: 24px;
-        margin: 0;
-        color: var(--icon-strong);
-      }
-      .compact h3 {
-        grid-column: 2;
-        grid-row: 1;
-        align-self: start;
-        font-size: 16px;
-        font-weight: 500;
-        line-height: 1.35;
-        margin: 0;
-      }
-      .compact p {
-        grid-column: 1 / -1;
-        grid-row: 2;
-        font-size: 13px;
-        color: var(--text);
-        line-height: 1.62;
-        margin: 4px 0 0;
-      }
-      .foundation .compact {
-        background: var(--card);
-      }
-      .testimonials {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 14px;
-      }
-      .quote-card {
-        display: grid;
-        grid-template-columns: 84px 1fr;
-        gap: 14px;
-        align-items: center;
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        background: var(--card);
-        padding: 14px;
-        min-height: 140px;
-      }
-      .quote-card > img {
-        width: 76px;
-        height: 76px;
-        border-radius: 50%;
-        object-fit: cover;
-      }
-      .quote {
-        font-size: 13px;
-        color: var(--text);
-        line-height: 1.62;
-        margin: 0 0 7px;
-      }
-      .quote-name {
-        font-size: 14px;
-        font-weight: 600;
-        margin: 0;
-      }
-      .quote-meta {
-        font-size: 12px;
-        color: var(--muted);
-      }
-      .cta {
-        padding: 0 0 42px;
-      }
-      .cta-inner {
-        position: relative;
-        isolation: isolate;
-        overflow: hidden;
-        min-height: 116px;
-        border-radius: 14px;
-        background: var(--blue) url("assets/cta-mountain.png") center/cover
-          no-repeat;
-        color: #fff;
-        display: grid;
-        grid-template-columns: 1fr auto 200px;
-        align-items: center;
-        gap: 26px;
-        padding: 24px 40px;
-        box-shadow: none;
-      }
-      html[data-theme="dark"] .cta-inner::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 0;
-        pointer-events: none;
-        background: rgba(0, 0, 0, 0.34);
-      }
-      .cta-inner > * {
-        position: relative;
-        z-index: 1;
-      }
-      .cta h2 {
-        font-size: 28px;
-        line-height: 1.25;
-        margin: 0 0 4px;
-      }
-      .cta p {
-        font-size: 14px;
-        margin: 0;
-        color: rgba(255, 255, 255, 0.86);
-      }
-      .cta .btn {
-        background: #fff;
-        color: var(--blue);
-        border-color: #fff;
-        min-width: 150px;
-      }
-      .cta-en {
-        font-size: 12px;
-        line-height: 1.42;
-        letter-spacing: 0.8px;
-        padding-left: 22px;
-        border-left: 1px solid #ffffff88;
-      }
-      .site-footer {
-        border-top: 1px solid var(--line);
-        padding: 30px 0 24px;
-      }
-      .footer-grid {
-        display: grid;
-        grid-template-columns: 1.7fr repeat(4, 1fr);
-        gap: 34px;
-      }
-      .footer-brand img {
-        width: 175px;
-      }
-      .footer-brand p {
-        font-size: 13px;
-        color: var(--text);
-        margin: 9px 0;
-      }
-      .socials {
-        display: flex;
-        gap: 10px;
-        margin-top: 13px;
-      }
-      .social-button {
-        width: 36px;
-        height: 36px;
-        display: grid;
-        place-items: center;
-        border: 1px solid var(--line);
-        border-radius: 9px;
-        background: var(--soft);
-        color: var(--ink);
-        cursor: pointer;
-      }
-      .social-button .ui-icon {
-        width: 19px;
-        height: 19px;
-        color: var(--icon);
-      }
-      .social-button:hover {
-        background: var(--card);
-      }
-      .qr-modal[hidden] {
-        display: none;
-      }
-      .qr-modal {
-        position: fixed;
-        inset: 0;
-        z-index: 100;
-        display: grid;
-        place-items: center;
-        padding: 24px;
-      }
-      .qr-modal-backdrop {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.52);
-      }
-      .qr-dialog {
-        position: relative;
-        width: min(360px, 100%);
-        padding: 26px 24px 24px;
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        background: var(--card);
-        color: var(--ink);
-        text-align: center;
-      }
-      .qr-close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 32px;
-        height: 32px;
-        display: grid;
-        place-items: center;
-        padding: 0;
-        border: 1px solid var(--line);
-        border-radius: 50%;
-        background: transparent;
-        color: var(--ink);
-        cursor: pointer;
-      }
-      .qr-close .ui-icon {
-        width: 16px;
-        height: 16px;
-        color: currentColor;
-      }
-      .qr-platform {
-        margin: 0;
-        color: var(--muted);
-        font-size: 13px;
-      }
-      .qr-dialog h2 {
-        margin: 3px 0 0;
-        font-size: 22px;
-        line-height: 1.3;
-        font-weight: 600;
-      }
-      .qr-dialog img {
-        width: 220px;
-        height: 220px;
-        margin: 18px auto 14px;
-        padding: 8px;
-        border: 1px solid var(--line);
-        background: #fff;
-        object-fit: contain;
-      }
-      .qr-hint {
-        margin: 0;
-        color: var(--muted);
-        font-size: 13px;
-      }
-      body.qr-modal-open {
-        overflow: hidden;
-      }
-      .footer-col h3 {
-        font-size: 14px;
-        font-weight: 500;
-        margin: 0 0 9px;
-      }
-      .footer-col a {
-        display: block;
-        font-size: 13px;
-        color: var(--text);
-        margin: 5px 0;
-      }
-      .footer-bottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-        margin-top: 25px;
-        padding-top: 17px;
-        border-top: 1px solid var(--line);
-        font-size: 12px;
-        color: var(--muted);
-      }
-      .footer-tools {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-      }
-      .legal-links {
-        white-space: nowrap;
-      }
-      .language-picker {
-        position: relative;
-      }
-      .language-trigger {
-        min-height: 30px;
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        padding: 0 9px 0 11px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--soft);
-        color: var(--text);
-        font-size: 12px;
-        cursor: pointer;
-      }
-      .language-trigger .ui-icon {
-        width: 14px;
-        height: 14px;
-        color: currentColor;
-        transition: transform 0.2s ease;
-      }
-      .language-trigger[aria-expanded="true"] .ui-icon {
-        transform: rotate(180deg);
-      }
-      .language-menu {
-        position: absolute;
-        right: 0;
-        bottom: calc(100% + 8px);
-        z-index: 5;
-        min-width: 112px;
-        padding: 5px;
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        background: var(--card);
-        box-shadow: var(--shadow);
-      }
-      .language-menu[hidden] {
-        display: none;
-      }
-      .language-menu button {
-        display: block;
-        width: 100%;
-        min-height: 30px;
-        padding: 0 9px;
-        border: 0;
-        border-radius: 6px;
-        background: transparent;
-        color: var(--text);
-        font-size: 12px;
-        text-align: left;
-        cursor: pointer;
-      }
-      .language-menu button:hover,
-      .language-menu button[aria-selected="true"] {
-        background: var(--soft);
-        color: var(--ink);
-      }
-      .menu,
-      .mobile-nav {
-        display: none;
-      }
-      html[data-theme="dark"] .brand img,
-      html[data-theme="dark"] .footer-brand img {
-        content: url("assets/logo-horizontal-white.png");
-      }
-      @media (max-width: 1050px) {
-        .header-inner {
-          grid-template-columns: 190px 1fr 180px;
-        }
-        .nav {
-          gap: 24px;
-        }
-        .industry-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .compact-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-        .testimonials {
-          grid-template-columns: 1fr;
-        }
-        .cta-inner {
-          grid-template-columns: 1fr auto;
-        }
-        .cta-en {
-          display: none;
-        }
-      }
-      @media (max-width: 760px) {
-        .shell {
-          width: min(100% - 30px, 620px);
-        }
-        .site-header {
-          height: 64px;
-        }
-        .site-header::before {
-          top: 8px;
-          right: 8px;
-          left: 8px;
-          height: 56px;
-          border-radius: 18px;
-        }
-        .site-header.is-scrolled::before {
-          top: 8px;
-          right: 8px;
-          left: 8px;
-          height: 56px;
-          border-radius: 18px;
-        }
-        section[id] {
-          scroll-margin-top: 84px;
-        }
-        .header-inner {
-          width: min(100% - 16px, 620px);
-          height: 64px;
-          padding: 8px 8px 0 16px;
-          grid-template-columns: 1fr auto;
-        }
-        .site-header.is-scrolled .header-inner {
-          height: 64px;
-          transform: none;
-        }
-        .brand img {
-          width: 145px;
-        }
-        .nav,
-        .language-switch,
-        .theme {
-          display: none;
-        }
-        .menu {
-          display: grid;
-          place-items: center;
-          width: 40px;
-          height: 40px;
-          border: 1px solid var(--line);
-          border-radius: 8px;
-          background: var(--card);
-          color: var(--ink);
-        }
-        .mobile-nav.open {
-          display: grid;
-          position: fixed;
-          top: 64px;
-          left: 0;
-          right: 0;
-          z-index: 60;
-          background: var(--card);
-          padding: 18px 24px 24px;
-          gap: 5px;
-          border-bottom: 1px solid var(--line);
-        }
-        .mobile-nav a,
-        .mobile-nav .nav-placeholder {
-          padding: 10px 3px;
-          font-weight: 800;
-        }
-        .hero {
-          min-height: 706px;
-        }
-        .hero-inner {
-          min-height: 706px;
-          padding-top: 64px;
-        }
-        .hero-slide {
-          object-position: 67% center;
-        }
-        html[data-theme="dark"] .hero::after {
-          background: linear-gradient(
-            180deg,
-            rgba(0, 0, 0, 0.72) 0%,
-            rgba(0, 0, 0, 0.58) 58%,
-            rgba(0, 0, 0, 0.34) 100%
-          );
-        }
-        .hero-inner {
-          align-items: flex-start;
-        }
-        .hero-copy {
-          width: 100%;
-          padding: 54px 0 238px;
-        }
-        .hero h1 {
-          font-size: 38px;
-        }
-        .hero-desc {
-          font-size: 16px;
-        }
-        .section {
-          padding: 43px 0;
-        }
-        .section-head {
-          align-items: flex-start;
-          flex-direction: column;
-          gap: 7px;
-        }
-        .section-title {
-          font-size: 27px;
-        }
-        .industry-grid,
-        .compact-grid {
-          grid-template-columns: 1fr;
-        }
-        .industry-body {
-          --industry-title-row: auto;
-          --industry-description-row: auto;
-          grid-template-rows: auto auto minmax(0, 1fr);
-        }
-        .compact {
-          --compact-title-row: auto;
-          grid-template-rows: var(--compact-title-row) minmax(0, 1fr);
-          min-height: auto;
-        }
-        .cta-inner {
-          grid-template-columns: 1fr;
-          padding: 25px;
-        }
-        .cta .btn {
-          justify-self: start;
-        }
-        .footer-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-        .footer-brand {
-          grid-column: 1/-1;
-        }
-        .footer-bottom {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .footer-tools {
-          width: 100%;
-          justify-content: space-between;
-          flex-wrap: wrap;
-        }
-      }
-      .mobile-nav a.active {
-        color: var(--blue);
-      }
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          scroll-behavior: auto !important;
-          transition: none !important;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="styles.css?v=20260929-demo-2" />
+    <script defer src="assets/vendor/lottie.min.js"></script>
+    <script defer src="js/i18n.js?v=20260929-demo-2"></script>
+    <script defer src="js/main.js?v=20260929-demo-2"></script>
+    <script defer src="js/config.js?v=20260929-demo-2"></script>
+    <script defer src="js/demo-request.js?v=20260929-demo-2"></script>
+    <script defer src="js/effects.js"></script>
   </head>
   <body>
-    <header class="site-header" id="siteHeader">
-      <div class="shell header-inner">
-        <a class="brand" href="#top"
-          ><img src="assets/logo-primary-with-tagline.png" alt="Rental OS"
+    <a class="skip-link" href="#see-the-platform"
+      ><span data-i18n="skip">跳到主要内容</span></a
+    >
+
+    <!-- Navigation: transparent on the hero; glass material after scrolling. -->
+    <header class="site-header" id="site-header">
+      <div class="header-inner">
+        <a
+          class="brand"
+          href="./"
+          aria-label="Rental OS 首页"
+          data-i18n-aria="aria.home"
+          ><img
+            src="assets/icons/rentalos-logo.svg"
+            alt="Rental OS"
+            width="124"
+            height="28"
         /></a>
-        <nav class="nav">
-          <a href="#solutions">行业方案</a><a href="#foundation">平台能力</a
-          ><a href="#customers">客户案例</a
-          ><span class="nav-placeholder">资源中心</span
-          ><span class="nav-placeholder">关于我们</span>
+        <nav class="main-nav" aria-label="主导航" data-i18n-aria="aria.mainNav">
+          <div class="nav-dropdown">
+            <button
+              class="nav-trigger"
+              aria-expanded="false"
+              aria-controls="products-menu"
+            >
+              <span data-i18n="nav.products">产品能力</span>
+              <span class="chevron"></span>
+            </button>
+            <div class="dropdown-panel" id="products-menu">
+              <span class="dropdown-label"
+                ><span data-i18n="nav.products">产品能力</span></span
+              >
+              <a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="product.booking">预约与库存</span></a
+              >
+              <a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="product.fulfillment">订单与履约</span></a
+              >
+              <span><span data-i18n="nav.more">多门店与经营协同</span></span>
+            </div>
+          </div>
+          <a role="link" aria-disabled="true" tabindex="-1" data-link-pending
+            ><span data-i18n="nav.plans">版本与定价</span></a
+          >
+          <a role="link" aria-disabled="true" tabindex="-1" data-link-pending
+            ><span data-i18n="nav.security">权限与数据</span></a
+          >
+          <div class="nav-dropdown">
+            <button
+              class="nav-trigger"
+              aria-expanded="false"
+              aria-controls="resources-menu"
+            >
+              <span data-i18n="nav.resources">资源中心</span>
+              <span class="chevron"></span>
+            </button>
+            <div class="dropdown-panel" id="resources-menu">
+              <span class="dropdown-label"
+                ><span data-i18n="nav.resources">资源中心</span></span
+              >
+              <a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="nav.blog">产品动态</span></a
+              >
+              <a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="nav.cases">业务场景</span></a
+              >
+              <a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="nav.helpBooking">预约使用指南</span></a
+              >
+              <a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="nav.helpOrders">履约使用指南</span></a
+              >
+            </div>
+          </div>
+          <div class="nav-dropdown">
+            <button
+              class="nav-trigger"
+              aria-expanded="false"
+              aria-controls="company-menu"
+            >
+              <span data-i18n="nav.company">关于我们</span>
+              <span class="chevron"></span>
+            </button>
+            <div class="dropdown-panel" id="company-menu">
+              <span class="dropdown-label"
+                ><span data-i18n="nav.company">关于我们</span></span
+              >
+              <a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="nav.about">关于 Rental OS</span></a
+              >
+              <a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="nav.careers">加入我们</span></a
+              >
+              <a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="nav.contact">联系我们</span></a
+              >
+            </div>
+          </div>
         </nav>
         <div class="header-actions">
-          <button
-            class="language-switch"
-            id="headerLanguageSwitch"
-            type="button"
-            aria-label="切换语言"
-            title="切换语言"
+          <a
+            class="button sign-in"
+            role="link"
+            aria-disabled="true"
+            tabindex="-1"
+            data-link-pending
+            ><span data-i18n="nav.signIn">登录后台</span></a
           >
-            <iconify-icon
-              class="ui-icon"
-              icon="ant-design:global-outlined"
-              aria-hidden="true"
-            ></iconify-icon>
-            <span class="language-code" id="headerLanguageCode">中</span>
-          </button>
-          <button class="theme" id="theme" aria-label="切换颜色模式">
-            <iconify-icon
-              class="ui-icon"
-              icon="ant-design:sun-outlined"
-              aria-hidden="true"
-            ></iconify-icon></button
-          ><a
-            class="btn primary"
-            href="mailto:hello@rentalos.cn?subject=预约 Rental OS 演示"
-            >预约演示</a
-          ><button class="menu" id="menu" aria-label="打开导航">
-            <iconify-icon
-              class="ui-icon"
-              icon="ant-design:menu-outlined"
-              aria-hidden="true"
-            ></iconify-icon>
-          </button>
+          <a
+            class="button header-cta"
+            href="#demo-request"
+            role="button"
+            aria-haspopup="dialog"
+            aria-controls="demo-request"
+            data-demo-open
+            ><span data-i18n="cta.demo">预约演示</span></a
+          >
         </div>
+        <button
+          class="menu-toggle"
+          aria-label="打开菜单"
+          data-i18n-aria="menu.open"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <nav class="mobile-nav" id="mobileNav">
-        <a href="#solutions">行业方案</a><a href="#foundation">平台能力</a
-        ><a href="#customers">客户案例</a
-        ><span class="nav-placeholder">资源中心</span
-        ><span class="nav-placeholder">关于我们</span>
+      <nav
+        class="mobile-menu"
+        id="mobile-menu"
+        aria-label="移动端导航"
+        data-i18n-aria="aria.mobileNav"
+        hidden
+      >
+        <details>
+          <summary><span data-i18n="nav.products">产品能力</span></summary>
+          <a role="link" aria-disabled="true" tabindex="-1" data-link-pending
+            ><span data-i18n="product.booking">预约与库存</span></a
+          ><a role="link" aria-disabled="true" tabindex="-1" data-link-pending
+            ><span data-i18n="product.fulfillment">订单与履约</span></a
+          ><span><span data-i18n="nav.more">多门店与经营协同</span></span>
+        </details>
+        <a role="link" aria-disabled="true" tabindex="-1" data-link-pending
+          ><span data-i18n="nav.plans">版本与定价</span></a
+        ><a role="link" aria-disabled="true" tabindex="-1" data-link-pending
+          ><span data-i18n="nav.security">权限与数据</span></a
+        >
+        <details>
+          <summary><span data-i18n="nav.resources">资源中心</span></summary>
+          <a role="link" aria-disabled="true" tabindex="-1" data-link-pending
+            ><span data-i18n="nav.blog">产品动态</span></a
+          ><a role="link" aria-disabled="true" tabindex="-1" data-link-pending
+            ><span data-i18n="nav.cases">业务场景</span></a
+          ><a role="link" aria-disabled="true" tabindex="-1" data-link-pending
+            ><span data-i18n="nav.helpBooking">预约使用指南</span></a
+          ><a role="link" aria-disabled="true" tabindex="-1" data-link-pending
+            ><span data-i18n="nav.helpOrders">履约使用指南</span></a
+          >
+        </details>
+        <details>
+          <summary><span data-i18n="nav.company">关于我们</span></summary>
+          <a role="link" aria-disabled="true" tabindex="-1" data-link-pending
+            ><span data-i18n="nav.about">关于 Rental OS</span></a
+          ><a role="link" aria-disabled="true" tabindex="-1" data-link-pending
+            ><span data-i18n="nav.careers">加入我们</span></a
+          ><a role="link" aria-disabled="true" tabindex="-1" data-link-pending
+            ><span data-i18n="nav.contact">联系我们</span></a
+          >
+        </details>
+        <div class="mobile-menu-actions">
+          <a
+            class="button outline"
+            role="link"
+            aria-disabled="true"
+            tabindex="-1"
+            data-link-pending
+            ><span data-i18n="nav.signIn">登录后台</span></a
+          ><a
+            class="button dark"
+            href="#demo-request"
+            role="button"
+            aria-haspopup="dialog"
+            aria-controls="demo-request"
+            data-demo-open
+            ><span data-i18n="cta.demo">预约演示</span></a
+          >
+        </div>
       </nav>
     </header>
-    <main id="top">
-      <section class="hero">
-        <div class="hero-media" aria-hidden="true">
+
+    <main>
+      <!-- Hero copy is ordinary HTML, not content hidden in a compiled bundle. -->
+      <section
+        class="hero"
+        aria-label="平台能力展示"
+        data-i18n-aria="aria.hero"
+        aria-roledescription="carousel"
+      >
+        <article
+          class="hero-slide is-active"
+          id="hero-0"
+          role="tabpanel"
+          aria-labelledby="hero-tab-0"
+        >
           <img
-            class="hero-slide active"
-            src="assets/hero-solutions-neutral.png"
-            alt=""
+            class="hero-image"
+            src="assets/images/hero-platform.webp"
+            alt="A team meeting overlooking Berlin"
+            fetchpriority="high"
           />
-        </div>
-        <div class="shell hero-inner">
-          <div class="hero-copy">
-            <div class="eyebrow">Rental OS – 行业解决方案</div>
-            <h1>面向<span>多行业</span>的<br />租赁解决方案</h1>
-            <p class="hero-desc">
-              覆盖摄影设备、露营装备、车辆载具、工程设备等多元租赁场景，让不同品类共享一套高效、可扩展的经营底座。
+          <div class="hero-copy container">
+            <h1>
+              <span data-i18n="hero.platform1">让租赁更简单。</span
+              ><br class="desktop-break" />
+              <span data-i18n="hero.platform2">让经营更高效。</span>
+            </h1>
+            <p>
+              <span data-i18n="hero.platformBody1"
+                >预约、订单、库存、履约与结算，在同一个平台协同。</span
+              ><br class="desktop-break" />
+              <span data-i18n="hero.platformBody2"
+                >一套底座，适配多种租赁业务。</span
+              >
             </p>
-            <div class="hero-buttons">
-              <a class="btn primary" href="#solutions">查看行业方案</a
+            <div class="button-row">
+              <a
+                class="button white"
+                href="#demo-request"
+                role="button"
+                aria-haspopup="dialog"
+                aria-controls="demo-request"
+                data-demo-open
+                ><span data-i18n="cta.demo">预约演示</span></a
+              ><a class="button glass" href="#see-the-platform"
+                ><span data-i18n="cta.how">了解平台</span></a
+              >
+            </div>
+          </div>
+        </article>
+        <article
+          class="hero-slide"
+          id="hero-1"
+          role="tabpanel"
+          aria-labelledby="hero-tab-1"
+          aria-hidden="true"
+          inert
+        >
+          <img
+            class="hero-image"
+            src="assets/images/hero-booking-refined.png"
+            alt="笔记本屏幕上展示简约的预约、设备与归还流程示意"
+          />
+          <div class="hero-copy container">
+            <h1>
+              <span data-i18n="hero.booking1">看清可租库存，</span
+              ><br class="desktop-break" />
+              <span data-i18n="hero.booking2">掌握每个档期。</span
+              ><br class="desktop-break" />
+              <span data-i18n="hero.booking3">预约更从容。</span>
+            </h1>
+            <p>
+              <span data-i18n="hero.bookingBody"
+                >连接商品、库存与可租日历，减少档期冲突和反复沟通。</span
+              >
+            </p>
+            <div class="button-row">
+              <a
+                class="button white"
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="cta.booking">查看预约能力</span></a
               ><a
-                class="btn secondary"
-                href="mailto:hello@rentalos.cn?subject=预约 Rental OS 演示"
-                >预约演示</a
-              >
-            </div>
-            <div class="proofs">
-              <span class="proof"
-                ><img src="assets/feature-1.png" alt="" />深耕租赁行业</span
-              ><span class="proof"
-                ><img src="assets/feature-3.png" alt="" />灵活可扩展</span
-              ><span class="proof"
-                ><img src="assets/feature-6.png" alt="" />服务全球租赁企业</span
+                class="button glass"
+                href="#demo-request"
+                role="button"
+                aria-haspopup="dialog"
+                aria-controls="demo-request"
+                data-demo-open
+                ><span data-i18n="cta.demo">预约演示</span></a
               >
             </div>
           </div>
-        </div>
-      </section>
-      <section class="section" id="solutions">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <h2 class="section-title">四大行业解决方案</h2>
-              <p class="section-sub">
-                深度理解行业需求，提供贴合业务场景的专业解决方案
-              </p>
-            </div>
-            <a class="section-link" href="#scenarios">查看更多行业方案</a>
-          </div>
-          <div class="industry-grid">
-            <article class="industry-card">
-              <img src="assets/industry-camera.png" alt="摄影设备租赁" />
-              <div class="industry-body">
-                <h3>摄影设备租赁</h3>
-                <p>从单机到影视设备，助力摄影器材租赁企业实现高效运营。</p>
-                <div class="features">
-                  <span class="feature"
-                    ><img
-                      src="assets/feature-1.png"
-                      alt=""
-                    />设备序列号管理</span
-                  ><span class="feature"
-                    ><img
-                      src="assets/feature-2.png"
-                      alt=""
-                    />套装与配件租赁</span
-                  ><span class="feature"
-                    ><img src="assets/feature-3.png" alt="" />拍摄档期管理</span
-                  ><span class="feature"
-                    ><img
-                      src="assets/feature-4.png"
-                      alt=""
-                    />设备维护与质检</span
-                  >
-                </div>
-              </div>
-            </article>
-            <article class="industry-card">
-              <img src="assets/industry-camping.png" alt="露营装备租赁" />
-              <div class="industry-body">
-                <h3>露营装备租赁</h3>
-                <p>
-                  覆盖帐篷、睡袋、户外桌椅等品类，助力露营装备租赁规模增长。
-                </p>
-                <div class="features">
-                  <span class="feature"
-                    ><img
-                      src="assets/feature-1.png"
-                      alt=""
-                    />多品类套装管理</span
-                  ><span class="feature"
-                    ><img
-                      src="assets/feature-2.png"
-                      alt=""
-                    />季节性库存调度</span
-                  ><span class="feature"
-                    ><img src="assets/feature-3.png" alt="" />清洁维护流程</span
-                  ><span class="feature"
-                    ><img
-                      src="assets/feature-4.png"
-                      alt=""
-                    />门店配送与归还</span
-                  >
-                </div>
-              </div>
-            </article>
-            <article class="industry-card">
-              <img src="assets/industry-car.png" alt="车辆载具租赁" />
-              <div class="industry-body">
-                <h3>车辆载具租赁</h3>
-                <p>支持汽车、房车、摩托车、电动车等多种车辆租赁场景。</p>
-                <div class="features">
-                  <span class="feature"
-                    ><img
-                      src="assets/feature-1.png"
-                      alt=""
-                    />车辆档期与调度</span
-                  ><span class="feature"
-                    ><img
-                      src="assets/feature-2.png"
-                      alt=""
-                    />证照与资质管理</span
-                  ><span class="feature"
-                    ><img
-                      src="assets/feature-3.png"
-                      alt=""
-                    />保险与风控控制</span
-                  ><span class="feature"
-                    ><img
-                      src="assets/feature-4.png"
-                      alt=""
-                    />里程与用车记录</span
-                  >
-                </div>
-              </div>
-            </article>
-            <article class="industry-card">
-              <img src="assets/industry-excavator.png" alt="工程设备租赁" />
-              <div class="industry-body">
-                <h3>工程设备租赁</h3>
-                <p>
-                  服务建筑工程、基建施工等场景，助力设备租赁企业数字化管理。
-                </p>
-                <div class="features">
-                  <span class="feature"
-                    ><img
-                      src="assets/feature-1.png"
-                      alt=""
-                    />大型设备资产管理</span
-                  ><span class="feature"
-                    ><img src="assets/feature-2.png" alt="" />工地项目租赁</span
-                  ><span class="feature"
-                    ><img
-                      src="assets/feature-3.png"
-                      alt=""
-                    />检修与保养计划</span
-                  ><span class="feature"
-                    ><img src="assets/feature-4.png" alt="" />复杂计费规则</span
-                  >
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-      <section class="section soft" id="scenarios">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <h2 class="section-title">按业务场景解决问题</h2>
-              <p class="section-sub">
-                覆盖租赁全流程，解决企业经营中的关键问题
-              </p>
-            </div>
-            <a class="section-link" href="#foundation">查看全部场景</a>
-          </div>
-          <div class="compact-grid">
-            <article class="compact">
-              <img src="assets/feature-1.png" alt="" />
-              <h3>多门店经营</h3>
-              <p>
-                支持多门店、多仓库统一管理，实时掌握库存与业务数据，提升协同效率。
-              </p>
-            </article>
-            <article class="compact">
-              <img src="assets/feature-2.png" alt="" />
-              <h3>预约与可租日历</h3>
-              <p>
-                在线预约、可租日历、冲突提醒，提升预订效率，减少沟通成本。
-              </p>
-            </article>
-            <article class="compact">
-              <img src="assets/feature-3.png" alt="" />
-              <h3>配送与归还</h3>
-              <p>
-                灵活配置交付方式、配送范围与履约费用，提升交付效率。
-              </p>
-            </article>
-            <article class="compact">
-              <img src="assets/feature-4.png" alt="" />
-              <h3>会员营销与复购</h3>
-              <p>会员体系、优惠券与积分工具，提升客户复购。</p>
-            </article>
-            <article class="compact">
-              <img src="assets/feature-5.png" alt="" />
-              <h3>押金与结算</h3>
-              <p>押金管理、多种结算方式，让财务对账更轻松。</p>
-            </article>
-            <article class="compact">
-              <img src="assets/feature-6.png" alt="" />
-              <h3>小程序获客</h3>
-              <p>预留品牌小程序与 App 接口，打通私域经营。</p>
-            </article>
-          </div>
-        </div>
-      </section>
-      <section class="section foundation" id="foundation">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <h2 class="section-title">平台能力共通底座</h2>
-              <p class="section-sub">
-                灵活、稳定、可扩展，支撑多行业租赁业务快速发展
-              </p>
+        </article>
+        <article
+          class="hero-slide"
+          id="hero-2"
+          role="tabpanel"
+          aria-labelledby="hero-tab-2"
+          aria-hidden="true"
+          inert
+        >
+          <img
+            class="hero-image"
+            src="assets/images/hero-fulfillment-monochrome.png"
+            alt="桌面屏幕上展示简约的租赁履约流程示意"
+          />
+          <div class="hero-copy container">
+            <h1>
+              <span data-i18n="hero.order1">从下单到归还，</span
+              ><br class="desktop-break" />
+              <span data-i18n="hero.order2">全程有迹可循。</span>
+            </h1>
+            <p>
+              <span data-i18n="hero.orderBody"
+                >交付、租用、归还与结算，串起完整的租赁履约流程。</span
+              >
+            </p>
+            <div class="button-row">
+              <a
+                class="button white"
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="cta.orders">查看履约能力</span></a
+              ><a
+                class="button glass"
+                href="#demo-request"
+                role="button"
+                aria-haspopup="dialog"
+                aria-controls="demo-request"
+                data-demo-open
+                ><span data-i18n="cta.demo">预约演示</span></a
+              >
             </div>
           </div>
-          <div class="compact-grid">
-            <article class="compact">
-              <img src="assets/feature-1.png" alt="" />
-              <h3>多租户</h3>
-              <p>支持多品牌、多门店的集团化运营，统一管理业务。</p>
-            </article>
-            <article class="compact">
-              <img src="assets/feature-2.png" alt="" />
-              <h3>订单履约</h3>
-              <p>从下单、出库、配送到归还的完整管理，全程可追踪。</p>
-            </article>
-            <article class="compact">
-              <img src="assets/feature-3.png" alt="" />
-              <h3>规则引擎</h3>
-              <p>灵活配置计费、押金、逾时与业务流程，适配不同规则。</p>
-            </article>
-            <article class="compact">
-              <img src="assets/feature-4.png" alt="" />
-              <h3>优惠体系</h3>
-              <p>优惠券、满减、会员权益等营销工具。</p>
-            </article>
-            <article class="compact">
-              <img src="assets/feature-5.png" alt="" />
-              <h3>数据分析</h3>
-              <p>经营数据、设备利用率与多维度报表。</p>
-            </article>
-            <article class="compact">
-              <img src="assets/feature-6.png" alt="" />
-              <h3>API 集成</h3>
-              <p>开放接口，快速对接电商、ERP 与财务系统。</p>
-            </article>
+        </article>
+        <div class="hero-bottom container">
+          <div class="hero-controls">
+            <button
+              class="round-button hero-prev"
+              aria-label="上一张首屏"
+              data-i18n-aria="aria.heroPrev"
+            >
+              <img src="assets/icons/inline-6.svg" alt="" /></button
+            ><button
+              class="round-button hero-next"
+              aria-label="下一张首屏"
+              data-i18n-aria="aria.heroNext"
+            >
+              <img src="assets/icons/inline-7.svg" alt="" />
+            </button>
           </div>
-        </div>
-      </section>
-      <section class="section soft" id="customers">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <h2 class="section-title">客户正在这样使用 Rental OS</h2>
-              <p class="section-sub">
-                来自不同行业的企业选择 Rental OS，实现业务增长
-              </p>
-            </div>
-          </div>
-          <div class="testimonials">
-            <article class="quote-card">
-              <img
-                src="assets/testimonial-portrait.png"
-                alt="摄影器材租赁客户"
-              />
-              <div>
-                <p class="quote">
-                  “Rental OS 帮助我们实现了多门店统一管理，设备周转率提升了
-                  40%，运营效率显著提高。”
-                </p>
-                <p class="quote-name">某摄影器材连锁</p>
-                <div class="quote-meta">全国 20+ 门店｜摄影设备租赁</div>
-              </div>
-            </article>
-            <article class="quote-card">
-              <img
-                src="assets/testimonial-camping.png"
-                alt="露营装备租赁客户"
-              />
-              <div>
-                <p class="quote">
-                  “在线预订和会员体系，让顾客下单更方便，客户复购率也明显提升。”
-                </p>
-                <p class="quote-name">某露营装备品牌</p>
-                <div class="quote-meta">专注户外生活｜露营装备租赁</div>
-              </div>
-            </article>
-            <article class="quote-card">
-              <img
-                src="assets/testimonial-engineering.png"
-                alt="工程设备租赁客户"
-              />
-              <div>
-                <p class="quote">
-                  “设备管理更加规范，项目损耗降低，跨区域调度效率提升了 50%。”
-                </p>
-                <p class="quote-name">某工程设备服务商</p>
-                <div class="quote-meta">区域领先｜工程设备租赁</div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-      <section class="cta" id="resources">
-        <div class="shell cta-inner">
-          <div>
-            <h2>不同行业，同一套高效租赁底座。</h2>
-            <p>立即咨询行业顾问，获取专属解决方案，让您的业务更进一步。</p>
-          </div>
-          <a
-            class="btn"
-            href="mailto:hello@rentalos.cn?subject=咨询 Rental OS 行业解决方案"
-            >咨询行业顾问</a
+          <div
+            class="hero-tabs"
+            role="tablist"
+            aria-label="首屏展示选项"
+            data-i18n-aria="aria.heroSlides"
           >
-          <div class="cta-en">A MORE<br />PRODUCTIVE<br />RENTAL WORLD</div>
+            <button
+              class="hero-tab is-active"
+              role="tab"
+              id="hero-tab-0"
+              aria-controls="hero-0"
+              aria-selected="true"
+              data-slide="0"
+            >
+              <img src="assets/images/rentalos-icon-color.svg" alt="" /><span
+                ><span data-i18n="hero.platformTab">Rental OS 平台</span></span
+              ><span class="hero-progress"></span>
+            </button>
+            <button
+              class="hero-tab"
+              role="tab"
+              id="hero-tab-1"
+              aria-controls="hero-1"
+              aria-selected="false"
+              tabindex="-1"
+              data-slide="1"
+            >
+              <img src="assets/icons/rentalos-booking.svg" alt="" /><span
+                ><span data-i18n="product.booking">预约与库存</span></span
+              ><span class="hero-progress"></span>
+            </button>
+            <button
+              class="hero-tab"
+              role="tab"
+              id="hero-tab-2"
+              aria-controls="hero-2"
+              aria-selected="false"
+              tabindex="-1"
+              data-slide="2"
+            >
+              <img src="assets/icons/rentalos-orders.svg" alt="" /><span
+                ><span data-i18n="product.fulfillment">订单与履约</span></span
+              ><span class="hero-progress"></span>
+            </button>
+            <div class="hero-tab coming">
+              <img src="assets/icons/rentalos-locations.svg" alt="" /><span
+                ><span data-i18n="product.more">多门店与经营协同</span></span
+              >
+            </div>
+          </div>
+          <button
+            class="sr-only autoplay-toggle"
+            aria-label="暂停首屏轮播"
+            data-i18n-aria="hero.pause"
+          >
+            <span data-i18n="hero.pause">暂停首屏轮播</span>
+          </button>
+        </div>
+      </section>
+
+      <div class="platform-area" id="see-the-platform">
+        <section
+          class="client-marquee"
+          aria-label="Rental OS 平台与行业场景"
+          data-i18n-aria="aria.clients"
+        >
+          <div class="marquee-track">
+            <span><img src="assets/icons/rentalos-booking.svg" alt="" /><span data-i18n="marquee.booking">预约与库存</span></span>
+            <span><img src="assets/icons/rentalos-orders.svg" alt="" /><span data-i18n="marquee.orders">订单与履约</span></span>
+            <span><img src="assets/icons/rentalos-locations.svg" alt="" /><span data-i18n="marquee.locations">门店与团队</span></span>
+            <span><img src="assets/icons/rentalos-assets.svg" alt="" /><span data-i18n="marquee.assets">资产与设备</span></span>
+            <span><img src="assets/icons/rentalos-term.svg" alt="" /><span data-i18n="marquee.term">租期管理</span></span>
+            <span><img src="assets/icons/rentalos-finance.svg" alt="" /><span data-i18n="marquee.finance">财务结算</span></span>
+            <span><img src="assets/icons/rentalos-camera.svg" alt="" /><span data-i18n="marquee.camera">摄影器材</span></span>
+            <span><img src="assets/icons/rentalos-outdoor.svg" alt="" /><span data-i18n="marquee.outdoor">露营装备</span></span>
+            <span><img src="assets/icons/rentalos-vehicle.svg" alt="" /><span data-i18n="marquee.vehicle">车辆载具</span></span>
+            <span><img src="assets/icons/rentalos-equipment.svg" alt="" /><span data-i18n="marquee.equipment">工程设备</span></span>
+          </div>
+        </section>
+
+        <section class="flow-section container">
+          <div class="section-heading">
+            <p class="eyebrow">
+              <span class="intelligence-dots" aria-hidden="true">⠼</span>
+              <span data-i18n="flow.eyebrow">预约。交付。归还。</span>
+            </p>
+            <h2>
+              <span data-i18n="flow.heading1">连接租赁业务的</span><br />
+              <span data-i18n="flow.heading2">每一个环节。</span>
+            </h2>
+          </div>
+          <div
+            class="flow-card"
+            role="img"
+            aria-label="从预约、下单到交付、归还与结算的租赁业务流程示意。"
+            data-i18n-aria="aria.flow"
+          >
+            <div
+              class="lottie-animation flow-animation"
+              data-animation="flow"
+              data-mobile-animation="flow-mobile"
+              data-loop="true"
+            ></div>
+          </div>
+        </section>
+
+        <section class="products-section container" id="products">
+          <div class="section-heading centered">
+            <p class="eyebrow">
+              <span class="intelligence-dots" aria-hidden="true">⠼</span>
+              <span data-i18n="products.eyebrow"
+                >一个平台，连接经营全流程。</span
+              >
+            </p>
+            <h2>
+              <span data-i18n="products.heading1">把繁琐的租赁，</span><br />
+              <span data-i18n="products.heading2">变成有序的经营。</span>
+            </h2>
+            <p>
+              <span data-i18n="products.body"
+                >不同品类、门店与团队，共享一套灵活的租赁业务底座。</span
+              >
+            </p>
+          </div>
+          <div class="product-grid">
+            <a
+              class="product-card experience-card"
+              role="link"
+              aria-disabled="true"
+              tabindex="-1"
+              data-link-pending
+            >
+              <div class="product-status">
+                <img class="product-status-icon" src="assets/icons/rentalos-booking.svg" alt="" /><span
+                  class="status-name"
+                  ><span data-i18n="product.booking">预约与库存</span></span
+                ><span class="status-detail"
+                  ><span data-i18n="product.bookingStatus"
+                    >商品 · 库存 · 可租日历</span
+                  ></span
+                >
+              </div>
+              <div class="product-visual">
+                <div class="survey-card">
+                  <img
+                    class="survey-image"
+                    src="assets/images/survey.png"
+                 alt="客户在平板电脑上查看信息"
+                  />
+                  <div class="survey-copy">
+                    <strong
+                      ><span data-i18n="product.surveyTitle"
+                        >让客户更方便地预约。</span
+                      ></strong
+                    >
+                    <p>
+                      <span data-i18n="product.surveyBody"
+                        >展示可租商品与档期，让客户在线预约，让门店清晰安排。</span
+                      >
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="lottie-animation product-hover"
+                  data-animation="experience-hover"
+                  data-hover-animation="true"
+                ></div>
+              </div>
+              <div class="product-description">
+                <h3><span data-i18n="product.booking">预约与库存</span></h3>
+                <p>
+                  <span data-i18n="product.bookingBody"
+                    >商品、库存与可租日历统一管理，支持套装与配件租赁，让预约安排更清晰。</span
+                  >
+                </p>
+                <span class="product-explore"
+                  ><span class="explore-mobile"
+                    ><span data-i18n="cta.booking">查看预约能力</span></span
+                  ><span class="explore-desktop"
+                    ><span data-i18n="cta.explore">了解更多</span></span
+                  ><img src="assets/icons/inline-7.svg" alt=""
+                /></span>
+              </div>
+            </a>
+            <a
+              class="product-card property-card"
+              role="link"
+              aria-disabled="true"
+              tabindex="-1"
+              data-link-pending
+            >
+              <div class="product-status">
+                <img class="product-status-icon" src="assets/icons/rentalos-orders.svg" alt="" /><span
+                  class="status-name"
+                  ><span data-i18n="product.fulfillment">订单与履约</span></span
+                ><span class="status-detail"
+                  ><span data-i18n="product.orderStatus"
+                    >订单 · 交付 · 归还 · 结算</span
+                  ></span
+                >
+              </div>
+              <div class="product-visual">
+                <div class="property-photo-window">
+                  <img
+                    class="property-image"
+                     src="assets/images/rental-dispatch-neutral.png"
+                     alt="租赁设备装箱并准备交付"
+                  />
+                </div>
+                <div class="lease-card">
+                  <div class="lease-preview">
+                    <img src="assets/images/lease.png" alt="" />
+                    <span>PDF</span>
+                  </div>
+                  <h4>
+                    <span data-i18n="order.previewName">租赁订单示例</span>
+                  </h4>
+                  <p>
+                    <span class="leased-dot"></span>
+                    <span data-i18n="order.leased">租用中</span>
+                  </p>
+                  <p>
+                    <span data-i18n="order.renew">租期与归还时间可追踪</span>
+                  </p>
+                  <p>
+                    <img src="assets/icons/inline-12.svg" alt="" />
+                    <span data-i18n="order.location">门店配送 · 到店归还</span>
+                  </p>
+                  <div class="lease-risk">
+                    <span data-i18n="order.risk">归还验收</span>
+                    <span><span data-i18n="order.flag">待处理</span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="product-description">
+                <h3><span data-i18n="product.fulfillment">订单与履约</span></h3>
+                <p>
+                  <span data-i18n="product.orderBody"
+                    >从下单、出库到配送、归还与费用结算，每个状态都可追踪。</span
+                  >
+                </p>
+                <span class="product-explore"
+                  ><span class="explore-mobile"
+                    ><span data-i18n="cta.orders">查看履约能力</span></span
+                  ><span class="explore-desktop"
+                    ><span data-i18n="cta.explore">了解更多</span></span
+                  ><img src="assets/icons/inline-7.svg" alt=""
+                /></span>
+              </div>
+            </a>
+            <article class="product-card next-card">
+              <div class="product-status">
+                <img class="product-status-icon" src="assets/icons/rentalos-locations.svg" alt="" /><span
+                  class="status-name"
+                  ><span data-i18n="product.multi">多门店协同</span></span
+                ><span class="status-detail"
+                  ><span data-i18n="product.multiStatus"
+                    >门店 · 仓库 · 经营空间</span
+                  ></span
+                >
+              </div>
+              <div class="product-visual">
+                <div class="next-icon-grid" aria-hidden="true">
+                  <img src="assets/icons/image-icon-4.svg" alt="" /><img
+                    src="assets/icons/image-icon-5.svg"
+                    alt=""
+                  /><img src="assets/icons/image-icon-6.svg" alt="" /><img
+                    src="assets/icons/image-icon-7.svg"
+                    alt=""
+                  /><img src="assets/icons/image-icon-8.svg" alt="" /><img
+                    src="assets/icons/image-icon-9.svg"
+                    alt=""
+                  /><img src="assets/icons/image-icon-10.svg" alt="" /><img
+                    src="assets/icons/image-icon-11.svg"
+                    alt=""
+                  /><img src="assets/icons/image-icon-12.svg" alt="" /><img
+                    src="assets/icons/image-icon-13.svg"
+                    alt=""
+                  /><img src="assets/icons/image-icon-14.svg" alt="" /><img
+                    src="assets/icons/image-icon-15.svg"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="product-description">
+                <h3><span data-i18n="product.more">多门店与经营协同</span></h3>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <!-- Testimonial slides stay in the HTML so every sentence is directly editable. -->
+      <section
+        class="quote-section"
+        aria-label="租赁业务场景示例"
+        data-i18n-aria="aria.stories"
+        aria-roledescription="carousel"
+      >
+        <div class="quote-viewport">
+          <div class="quote-track">
+            <article class="quote-card">
+              <img
+                class="cover-image"
+                src="assets/images/industry-camera-neutral.png"
+                alt="中性色调的摄影器材与镜头"
+              />
+              <div class="quote-shade"></div>
+              <div class="quote-content">
+                <p class="quote-badge">
+                  <span data-i18n="product.booking">预约与库存</span>
+                </p>
+                <h2>
+                  <span data-i18n="story.camera"
+                    >“拍摄档期、套装与配件，在同一张可租日历里安排。”</span
+                  >
+                </h2>
+                <a
+                  class="button white"
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                  data-link-pending
+                  ><span data-i18n="cta.booking">查看预约能力</span></a
+                >
+                <div class="quote-person">
+                  <div>
+                    <p>
+                      <span data-i18n="story.cameraName">摄影设备租赁</span>
+                    </p>
+                    <p>
+                      <span data-i18n="story.cameraRole"
+                        >业务场景示例 · 档期与套装</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="quote-card">
+              <img
+                class="cover-image"
+                src="assets/images/industry-equipment-neutral.png"
+                alt="低饱和度的工程挖掘设备"
+              />
+              <div class="quote-shade"></div>
+              <div class="quote-content">
+                <p class="quote-badge">
+                  <span data-i18n="product.fulfillment">订单与履约</span>
+                </p>
+                <h2>
+                  <span data-i18n="story.equipment"
+                    >“设备在哪里、何时归还、是否待检，业务状态一目了然。”</span
+                  >
+                </h2>
+                <a
+                  class="button white"
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                  data-link-pending
+                  ><span data-i18n="cta.orders">查看履约能力</span></a
+                >
+                <div class="quote-person">
+                  <div>
+                    <p>
+                      <span data-i18n="story.equipmentName">工程设备租赁</span>
+                    </p>
+                    <p>
+                      <span data-i18n="story.equipmentRole"
+                        >业务场景示例 · 资产与调度</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="quote-card">
+              <img
+                class="cover-image"
+                src="assets/images/industry-camping-neutral.png"
+                alt="山地湖畔的露营装备"
+              />
+              <div class="quote-shade"></div>
+              <div class="quote-content">
+                <p class="quote-badge">
+                  <span data-i18n="product.booking">预约与库存</span>
+                </p>
+                <h2>
+                  <span data-i18n="story.outdoor"
+                    >“从露营套装预约到归还清洁，让旺季安排更有序。”</span
+                  >
+                </h2>
+                <a
+                  class="button white"
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                  data-link-pending
+                  ><span data-i18n="cta.booking">查看预约能力</span></a
+                >
+                <div class="quote-person">
+                  <div>
+                    <p>
+                      <span data-i18n="story.outdoorName">露营装备租赁</span>
+                    </p>
+                    <p>
+                      <span data-i18n="story.outdoorRole"
+                        >业务场景示例 · 预约与归还</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="quote-card">
+              <img
+                class="cover-image"
+                src="assets/images/industry-vehicle-neutral.png"
+                alt="山地湖畔的银色租赁车辆"
+              />
+              <div class="quote-shade"></div>
+              <div class="quote-content">
+                <p class="quote-badge">
+                  <span data-i18n="product.booking">预约与库存</span>
+                </p>
+                <h2>
+                  <span data-i18n="story.vehicle"
+                    >“车辆档期、租期与费用记录，连接每一次交付和归还。”</span
+                  >
+                </h2>
+                <a
+                  class="button white"
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                  data-link-pending
+                  ><span data-i18n="cta.booking">查看预约能力</span></a
+                >
+                <div class="quote-person">
+                  <div>
+                    <p>
+                      <span data-i18n="story.vehicleName">车辆载具租赁</span>
+                    </p>
+                    <p>
+                      <span data-i18n="story.vehicleRole"
+                        >业务场景示例 · 交付与结算</span
+                      >
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="quote-controls container">
+          <button
+            class="round-button quote-prev"
+            aria-label="上一个业务场景"
+            data-i18n-aria="aria.storyPrev"
+          >
+            <img src="assets/icons/inline-6.svg" alt="" /></button
+          ><button
+            class="round-button quote-next"
+            aria-label="下一个业务场景"
+            data-i18n-aria="aria.storyNext"
+          >
+            <img src="assets/icons/inline-7.svg" alt="" />
+          </button>
+        </div>
+        <div
+          class="quote-dots"
+          aria-label="选择业务场景"
+          data-i18n-aria="aria.storySelect"
+        >
+          <button
+            aria-label="摄影租赁场景"
+            data-i18n-aria="aria.story1"
+            aria-current="true"
+          ></button
+          ><button
+            aria-label="设备租赁场景"
+            data-i18n-aria="aria.story2"
+          ></button
+          ><button
+            aria-label="露营租赁场景"
+            data-i18n-aria="aria.story3"
+          ></button
+          ><button
+            aria-label="车辆租赁场景"
+            data-i18n-aria="aria.story4"
+          ></button>
+        </div>
+        <button
+          class="sr-only quote-autoplay"
+          aria-label="暂停业务场景轮播"
+          data-i18n-aria="story.pause"
+        >
+          <span data-i18n="story.pause">暂停业务场景轮播</span>
+        </button>
+      </section>
+
+      <section class="teams-section" id="solutions">
+        <div class="section-heading container heading-row">
+          <div>
+            <p class="eyebrow">
+              <span class="intelligence-dots" aria-hidden="true">⠼</span>
+              <span data-i18n="solutions.eyebrow">行业解决方案</span>
+            </p>
+            <h2>
+              <span data-i18n="solutions.heading">为不同租赁业务而建。</span>
+            </h2>
+          </div>
+          <div class="carousel-arrows">
+            <button
+              class="outline-arrow teams-prev"
+              aria-label="上一个行业方案"
+              data-i18n-aria="aria.teamPrev"
+            >
+              <img src="assets/icons/inline-8.svg" alt="" /></button
+            ><button
+              class="outline-arrow teams-next"
+              aria-label="下一个行业方案"
+              data-i18n-aria="aria.teamNext"
+            >
+              <img src="assets/icons/inline-9.svg" alt="" />
+            </button>
+          </div>
+        </div>
+        <div
+          class="teams-track"
+          aria-label="行业解决方案"
+          data-i18n-aria="aria.teams"
+          tabindex="0"
+        >
+          <article class="team-card">
+            <img
+              class="cover-image"
+              src="assets/images/industry-camera-neutral.png"
+              alt="摄影器材与镜头"
+            />
+            <div class="team-shade"></div>
+            <div class="team-content">
+              <h3><span data-i18n="team.camera">摄影器材租赁</span></h3>
+              <p>
+                <span data-i18n="team.cameraBody"
+                  >从单机到完整套装，统一管理器材、配件与拍摄档期。</span
+                >
+              </p>
+              <a
+                class="button white"
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="cta.orders">查看履约能力</span></a
+              >
+            </div>
+          </article>
+          <article class="team-card">
+            <img
+              class="cover-image"
+              src="assets/images/industry-camping-neutral.png"
+              alt="湖畔露营帐篷与家具"
+            />
+            <div class="team-shade"></div>
+            <div class="team-content">
+              <h3><span data-i18n="team.outdoor">露营装备租赁</span></h3>
+              <p>
+                <span data-i18n="team.outdoorBody"
+                  >帐篷、睡袋与户外家具，连接预约、配送和归还。</span
+                >
+              </p>
+              <a
+                class="button white"
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="cta.booking">查看预约能力</span></a
+              >
+            </div>
+          </article>
+          <article class="team-card">
+            <img
+              class="cover-image"
+              src="assets/images/industry-vehicle-neutral.png"
+              alt="银色租赁车辆"
+            />
+            <div class="team-shade"></div>
+            <div class="team-content">
+              <h3><span data-i18n="team.vehicle">车辆载具租赁</span></h3>
+              <p>
+                <span data-i18n="team.vehicleBody"
+                  >掌握车辆档期与租期，让交付、续租和归还更清晰。</span
+                >
+              </p>
+              <a
+                class="button white"
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="cta.booking">查看预约能力</span></a
+              >
+            </div>
+          </article>
+          <article class="team-card">
+            <img
+              class="cover-image"
+              src="assets/images/industry-equipment-neutral.png"
+              alt="施工现场的挖掘设备"
+            />
+            <div class="team-shade"></div>
+            <div class="team-content">
+              <h3><span data-i18n="team.equipment">工程设备租赁</span></h3>
+              <p>
+                <span data-i18n="team.equipmentBody"
+                  >围绕项目管理设备，记录调度、使用与检修状态。</span
+                >
+              </p>
+              <a
+                class="button white"
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="cta.booking">查看预约能力</span></a
+              >
+            </div>
+          </article>
+          <article class="team-card">
+            <img
+              class="cover-image"
+              src="assets/images/team-product.webp"
+              alt="现代门店与办公建筑"
+            />
+            <div class="team-shade"></div>
+            <div class="team-content">
+              <h3><span data-i18n="team.locations">多门店经营</span></h3>
+              <p>
+                <span data-i18n="team.locationsBody"
+                  >门店、仓库与经营空间协同，团队共享清晰的业务视图。</span
+                >
+              </p>
+              <a
+                class="button white"
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="cta.booking">查看预约能力</span></a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="trust-section container" id="trust">
+        <div class="trust-copy">
+          <div class="section-heading">
+            <p class="eyebrow">
+              <span class="intelligence-dots" aria-hidden="true">⠼</span>
+              <span data-i18n="trust.eyebrow">权限与数据</span>
+            </p>
+            <h2>
+              <span data-i18n="trust.heading"
+                >让协同有边界，让业务可追溯。</span
+              >
+            </h2>
+            <p>
+              <span data-i18n="trust.body"
+                >按角色与经营空间组织业务，保留完整流程记录，让团队协同更清晰。</span
+              >
+            </p>
+          </div>
+          <div class="trust-points">
+            <button class="trust-point is-active" data-trust-step="0">
+              <strong><span data-i18n="trust.access">角色与权限</span></strong
+              ><span
+                ><span data-i18n="trust.accessBody"
+                  >根据岗位配置操作权限，让不同成员在各自职责内协作。</span
+                ></span
+              ></button
+            ><button class="trust-point" data-trust-step="1">
+              <strong
+                ><span data-i18n="trust.trace">业务记录可追踪</span></strong
+              ><span
+                ><span data-i18n="trust.traceBody"
+                  >订单、交付、归还与结算串联记录，业务状态与处理过程可查。</span
+                ></span
+              ></button
+            ><button class="trust-point" data-trust-step="2">
+              <strong
+                ><span data-i18n="trust.workspace">独立经营空间</span></strong
+              ><span
+                ><span data-i18n="trust.workspaceBody"
+                  >按经营空间组织库存与订单，保持业务范围清晰。</span
+                ></span
+              >
+            </button>
+          </div>
+        </div>
+        <div class="trust-visual">
+          <div
+            class="lottie-animation"
+            data-animation="trust"
+            data-loop="true"
+            role="img"
+            aria-label="角色权限、流程记录与经营空间的协同示意。"
+            data-i18n-aria="aria.trust"
+          ></div>
+        </div>
+      </section>
+
+      <section class="outcomes-section container" id="outcomes">
+        <div class="section-heading">
+          <p class="eyebrow">
+            <span class="intelligence-dots" aria-hidden="true">⠼</span>
+            <span data-i18n="outcomes.eyebrow">平台能力</span>
+          </p>
+          <h2>
+            <span data-i18n="outcomes.heading1">不同租赁业务，</span><br />
+            <span data-i18n="outcomes.heading2">同一套经营底座。</span>
+          </h2>
+          <p>
+            <span data-i18n="outcomes.body"
+              >围绕行业、流程与协同，组织你的租赁经营。</span
+            >
+          </p>
+        </div>
+        <div class="outcome-grid">
+          <article class="outcome-card">
+            <img
+              class="cover-image"
+              src="assets/images/industry-camera-neutral.png"
+              alt="摄影器材与镜头"
+            />
+            <div class="outcome-shade"></div>
+            <span class="outcome-category" data-i18n="story.cameraName">摄影设备租赁</span>
+            <div class="outcome-content">
+              <div class="metric" data-metric="4">4</div>
+              <h3>
+                <span data-i18n="outcomes.categories"
+                  >四个场景只是示例，Rental Core 支持快速新增品类。</span
+                >
+              </h3>
+              <p>
+                <span data-i18n="story.cameraName">摄影设备租赁</span
+                ><br /><span data-i18n="outcomes.categoriesNote"
+                  >摄影 · 露营 · 车辆 · 工程设备等</span
+                >
+              </p>
+            </div>
+          </article>
+          <article class="outcome-card">
+            <img
+              class="cover-image"
+              src="assets/images/industry-camping-neutral.png"
+              alt="湖畔露营装备"
+            />
+            <div class="outcome-shade"></div>
+            <span class="outcome-category" data-i18n="story.outdoorName">露营装备租赁</span>
+            <div class="outcome-content">
+              <div class="metric" data-metric="3">3</div>
+              <h3>
+                <span data-i18n="outcomes.flows"
+                  >预约、履约与经营协同，串起租赁业务。</span
+                >
+              </h3>
+              <p>
+                <span data-i18n="story.outdoorName">露营装备租赁</span
+                ><br /><span data-i18n="outcomes.flowsNote"
+                  >预约 · 履约 · 经营</span
+                >
+              </p>
+            </div>
+          </article>
+          <article class="outcome-card">
+            <img
+              class="cover-image"
+              src="assets/images/industry-equipment-neutral.png"
+              alt="工程挖掘设备"
+            />
+            <div class="outcome-shade"></div>
+            <span class="outcome-category" data-i18n="story.equipmentName">工程设备租赁</span>
+            <div class="outcome-content">
+              <div class="metric" data-metric="2">2</div>
+              <h3>
+                <span data-i18n="outcomes.ends"
+                  >经营端与用户端，连接团队和客户。</span
+                >
+              </h3>
+              <p>
+                <span data-i18n="story.equipmentName">工程设备租赁</span
+                ><br /><span data-i18n="outcomes.endsNote"
+                  >管理后台 · 用户端</span
+                >
+              </p>
+            </div>
+          </article>
+          <article class="outcome-card">
+            <img
+              class="cover-image"
+              src="assets/images/industry-vehicle-neutral.png"
+              alt="银色租赁车辆"
+            />
+            <div class="outcome-shade"></div>
+            <span class="outcome-category" data-i18n="story.vehicleName">车辆载具租赁</span>
+            <div class="outcome-content">
+              <div class="metric" data-metric="1">1</div>
+              <h3>
+                <span data-i18n="outcomes.platform"
+                  >一个平台，统一管理租赁全流程。</span
+                >
+              </h3>
+              <p>
+                <span data-i18n="story.vehicleName">车辆载具租赁</span
+                ><br /><span data-i18n="story.vehicleRole"
+                  >业务场景示例 · 交付与结算</span
+                >
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta-section container">
+        <div class="cta-card">
+          <canvas class="wave-canvas" aria-hidden="true"></canvas>
+          <div class="cta-content">
+            <h2>
+              <span data-i18n="cta.heading1">让租赁更简单。</span><br />
+              <span data-i18n="cta.heading2">从 Rental OS 开始。</span>
+            </h2>
+            <p>
+              <span data-i18n="cta.body1">带上你的业务场景，</span><br />
+              <span data-i18n="cta.body2">一起找到更合适的经营方式。</span>
+            </p>
+            <a
+              class="button white"
+              href="#demo-request"
+              role="button"
+              aria-haspopup="dialog"
+              aria-controls="demo-request"
+              data-demo-open
+              ><span data-i18n="cta.demo">预约演示</span></a
+            >
+          </div>
         </div>
       </section>
     </main>
-    <footer class="site-footer" id="about">
-      <div class="shell">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <img src="assets/logo-primary-with-tagline.png" alt="Rental OS" />
-            <p>让租赁更简单，让世界更高效。</p>
-            <div class="socials" aria-label="社交联系方式">
-              <button
-                class="social-button"
-                type="button"
-                data-social="wechat"
-                title="打开微信二维码"
-                aria-label="打开微信二维码"
-                aria-haspopup="dialog"
+
+    <footer class="site-footer">
+      <div class="footer-panel">
+        <div class="container">
+          <div class="footer-top">
+            <div class="footer-brand">
+              <a href="./"
+                ><img
+                  src="assets/icons/rentalos-logo.svg"
+                  alt="Rental OS"
+                  width="116"
+                  height="26"
+              /></a>
+              <p>
+                <span data-i18n="footer.tagline"
+                  >让租赁更简单，让世界更高效。</span
+                >
+              </p>
+              <div class="newsletter">
+                <p>
+                  <span data-i18n="footer.newsletter"
+                    >了解 Rental OS 的产品更新。</span
+                  >
+                </p>
+                <form id="newsletter-form">
+                  <label class="sr-only" for="newsletter-email"
+                    ><span data-i18n="footer.email">邮箱地址</span></label
+                  ><input
+                    type="email"
+                    id="newsletter-email"
+                    placeholder="请输入邮箱地址"
+                    data-i18n-placeholder="newsletter.placeholder"
+                    required
+                    autocomplete="email"
+                  /><button class="button dark" type="submit">
+                    <span data-i18n="footer.subscribe">订阅动态</span>
+                  </button>
+                </form>
+                <p
+                  id="newsletter-message"
+                  class="form-message"
+                  role="status"
+                ></p>
+              </div>
+            </div>
+            <nav
+              class="footer-links"
+              aria-label="页脚导航"
+              data-i18n-aria="aria.footer"
+            >
+              <div>
+                <h4><span data-i18n="nav.products">产品能力</span></h4>
+                <a
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                  data-link-pending
+                  ><span data-i18n="product.booking">预约与库存</span></a
+                ><a
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                  data-link-pending
+                  ><span data-i18n="product.fulfillment">订单与履约</span></a
+                >
+              </div>
+              <div>
+                <h4><span data-i18n="cta.explore">了解更多</span></h4>
+                <a href="#see-the-platform"
+                  ><span data-i18n="footer.how">平台介绍</span></a
+                ><a
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                  data-link-pending
+                  ><span data-i18n="nav.plans">版本与定价</span></a
+                ><a
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                  data-link-pending
+                  ><span data-i18n="nav.security">权限与数据</span></a
+                >
+              </div>
+              <div>
+                <h4><span data-i18n="nav.resources">资源中心</span></h4>
+                <a
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                  data-link-pending
+                  ><span data-i18n="nav.blog">产品动态</span></a
+                ><a
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                  data-link-pending
+                  ><span data-i18n="footer.helpBooking">预约使用指南</span></a
+                ><a
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                  data-link-pending
+                  ><span data-i18n="footer.helpOrders">履约使用指南</span></a
+                >
+              </div>
+              <div>
+                <h4><span data-i18n="nav.company">关于我们</span></h4>
+                <a
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                  data-link-pending
+                  ><span data-i18n="footer.about">关于 Rental OS</span></a
+                ><a
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                  data-link-pending
+                  ><span data-i18n="nav.careers">加入我们</span></a
+                ><a
+                  role="link"
+                  aria-disabled="true"
+                  tabindex="-1"
+                  data-link-pending
+                  ><span data-i18n="nav.contact">联系我们</span></a
+                >
+              </div>
+            </nav>
+          </div>
+          <div class="footer-bottom">
+            <p>
+              <span data-i18n="footer.copyright"
+                >© 2026 Rental OS. 保留所有权利。</span
               >
-                <iconify-icon
-                  class="ui-icon"
-                  icon="ant-design:wechat-outlined"
-                  aria-hidden="true"
-                ></iconify-icon>
-              </button>
-              <button
-                class="social-button"
-                type="button"
-                data-social="qq"
-                title="打开 QQ 二维码"
-                aria-label="打开 QQ 二维码"
-                aria-haspopup="dialog"
-              >
-                <iconify-icon
-                  class="ui-icon"
-                  icon="ant-design:qq-outlined"
-                  aria-hidden="true"
-                ></iconify-icon>
+            </p>
+            <div class="legal-links">
+              <a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="footer.imprint">网站声明</span></a
+              ><a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="footer.privacy">隐私政策</span></a
+              ><a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                ><span data-i18n="footer.terms">服务条款</span></a
+              ><button data-cookie-settings>
+                <span data-i18n="cookie.settings">偏好设置</span>
               </button>
             </div>
+            <div class="social-links">
+              <a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                aria-label="X"
+                ><img src="assets/icons/social-x.svg" alt="" /></a
+              ><a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                aria-label="LinkedIn"
+                ><img src="assets/icons/social-linkedin.svg" alt="" /></a
+              ><a
+                role="link"
+                aria-disabled="true"
+                tabindex="-1"
+                data-link-pending
+                aria-label="电子邮箱"
+                data-i18n-aria="aria.email"
+                ><img src="assets/icons/social-email.svg" alt=""
+              /></a>
+            </div>
           </div>
-          <div class="footer-col">
-            <h3>产品</h3>
-            <a href="#foundation">核心功能</a><a href="#scenarios">产品定位</a
-            ><a href="#resources">版本与定价</a>
-          </div>
-          <div class="footer-col">
-            <h3>解决方案</h3>
-            <a href="#solutions">行业解决方案</a
-            ><a href="#scenarios">场景方案</a><a href="#foundation">底座能力</a>
-          </div>
-          <div class="footer-col">
-            <h3>客户案例</h3>
-            <a href="#customers">客户故事</a><a href="#customers">企业案例</a
-            ><a href="#customers">客户评价</a>
-          </div>
-          <div class="footer-col">
-            <h3>关于我们</h3>
-            <a href="mailto:hello@rentalos.cn">联系我们</a
-            ><a href="#about">公司介绍</a><a href="#resources">帮助中心</a>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <span>© 2026 Rental OS. 保留所有权利。</span>
-          <div class="footer-tools">
-            <span class="legal-links">隐私政策　服务条款　网站地图</span>
+          <div class="footer-lower">
+            <p class="hosting-note">
+              <span data-i18n="footer.hosting"
+                >构建租赁世界。</span
+              >
+            </p>
             <div class="language-picker">
               <button
                 class="language-trigger"
@@ -1503,20 +1468,19 @@
                 type="button"
                 aria-haspopup="listbox"
                 aria-expanded="false"
+                aria-controls="languageMenu"
                 aria-label="选择语言"
+                data-i18n-aria="language.choose"
               >
                 <span id="languageCurrent">简体中文</span>
-                <iconify-icon
-                  class="ui-icon"
-                  icon="ant-design:down-outlined"
-                  aria-hidden="true"
-                ></iconify-icon>
+                <span class="language-chevron" aria-hidden="true"></span>
               </button>
               <div
                 class="language-menu"
                 id="languageMenu"
                 role="listbox"
                 aria-label="语言选项"
+                data-i18n-aria="language.options"
                 hidden
               >
                 <button
@@ -1540,500 +1504,182 @@
           </div>
         </div>
       </div>
+      <div class="footer-ghost">
+        <div class="container">
+          <img
+            class="footer-wordmark"
+            src="assets/images/rentalos-wordmark.svg"
+            alt="Rental OS"
+          />
+        </div>
+      </div>
     </footer>
-    <div class="qr-modal" id="qrModal" hidden>
-      <div class="qr-modal-backdrop" data-qr-close></div>
-      <div
-        class="qr-dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="qrModalTitle"
+
+    <dialog
+      class="demo-dialog"
+      id="demo-request"
+      aria-labelledby="demo-title"
+      aria-describedby="demo-intro"
+    >
+      <button
+        class="demo-close"
+        type="button"
+        data-demo-close
+        aria-label="关闭预约表单"
+        data-i18n-aria="demo.close"
       >
-        <button class="qr-close" id="qrModalClose" type="button" aria-label="关闭二维码">
-          <iconify-icon
-            class="ui-icon"
-            icon="ant-design:close-outlined"
-            aria-hidden="true"
-          ></iconify-icon>
+        ×
+      </button>
+      <h2 id="demo-title" data-i18n="cta.demo">预约演示</h2>
+      <p id="demo-intro" data-i18n="demo.intro">
+        留下联系方式，我们与你沟通业务需求和演示安排。
+      </p>
+      <form id="demo-form" novalidate>
+        <fieldset class="demo-fields" id="demo-fields">
+          <label for="demo-name"
+            ><span data-i18n="demo.name">姓名（必填）</span>
+            <input
+              id="demo-name"
+              name="name"
+              autocomplete="name"
+              maxlength="80"
+              required
+            />
+          </label>
+          <div class="demo-contact-row">
+            <label for="demo-contact-type"
+              ><span data-i18n="demo.type">联系类型</span>
+              <select id="demo-contact-type" name="contactType">
+                <option value="phone" data-i18n="demo.phone">手机</option>
+                <option value="email" data-i18n="demo.email">邮箱</option>
+                <option value="wechat" data-i18n="demo.wechat">微信</option>
+              </select>
+            </label>
+            <label for="demo-contact"
+              ><span data-i18n="demo.contact">联系方式（必填）</span>
+              <input
+                id="demo-contact"
+                name="contactValue"
+                type="tel"
+                autocomplete="tel"
+                maxlength="160"
+                required
+              />
+            </label>
+          </div>
+          <label for="demo-company"
+            ><span data-i18n="demo.company">公司 / 门店名称（选填）</span>
+            <input
+              id="demo-company"
+              name="company"
+              autocomplete="organization"
+              maxlength="120"
+            />
+          </label>
+          <label for="demo-message"
+            ><span data-i18n="demo.message">想了解什么？（选填）</span>
+            <textarea
+              id="demo-message"
+              name="message"
+              rows="3"
+              maxlength="1000"
+            ></textarea>
+          </label>
+          <p class="demo-privacy" data-i18n="demo.privacy">
+            提交即表示你同意 Rental OS
+            使用以上信息联系你，沟通本次演示；不会自动注册账号或订阅营销消息。
+          </p>
+        </fieldset>
+        <p
+          class="demo-feedback"
+          id="demo-feedback"
+          role="status"
+          aria-live="polite"
+          tabindex="-1"
+        ></p>
+        <button class="button dark demo-submit" type="submit" id="demo-submit">
+          <span data-i18n="demo.submit">提交预约</span>
         </button>
-        <p class="qr-platform" id="qrModalPlatform">微信</p>
-        <h2 id="qrModalTitle">微信二维码</h2>
-        <img id="qrModalImage" src="assets/qrcode-wechat.svg" alt="微信二维码" />
-        <p class="qr-hint" id="qrModalHint">使用微信扫描二维码</p>
+      </form>
+      <div
+        class="demo-success"
+        id="demo-success"
+        hidden
+        tabindex="-1"
+        role="status"
+      >
+        <h3 data-i18n="demo.successTitle">预约已收到</h3>
+        <p data-i18n="demo.successBody">
+          我们会通过你留下的联系方式与你沟通，确定演示时间。
+        </p>
+        <button class="button dark" type="button" data-demo-close>
+          <span data-i18n="demo.done">完成</span>
+        </button>
+      </div>
+    </dialog>
+    <noscript
+      ><p class="container">
+        预约表单需要启用 JavaScript。Please enable JavaScript to request a demo.
+      </p></noscript
+    >
+
+    <!-- Native dialog replaces the template's platform-dependent consent widget. -->
+    <dialog
+      class="cookie-dialog"
+      id="cookie-dialog"
+      aria-labelledby="cookie-title"
+    >
+      <form method="dialog">
+        <button
+          class="dialog-close"
+          aria-label="关闭偏好设置"
+          data-i18n-aria="cookie.close"
+          value="close"
+        >
+          ×
+        </button>
+        <h3 id="cookie-title">
+          <span data-i18n="cookie.settings">偏好设置</span>
+        </h3>
+        <p>
+          <span data-i18n="cookie.body"
+            >本地保存语言与网站偏好，方便你下次继续浏览。</span
+          >
+        </p>
+        <label class="cookie-option"
+          ><span><span data-i18n="cookie.essential">必要偏好</span></span
+          ><input type="checkbox" checked disabled /></label
+        ><label class="cookie-option"
+          ><span
+            ><span data-i18n="cookie.analytics">统计偏好（预留）</span></span
+          ><input type="checkbox" id="analytics-consent"
+        /></label>
+        <div class="button-row">
+          <button class="button outline" value="reject">
+            <span data-i18n="cookie.reject">仅保留必要项</span></button
+          ><button class="button dark" value="accept">
+            <span data-i18n="cookie.accept">接受全部</span></button
+          ><button class="button outline" value="save">
+            <span data-i18n="cookie.save">保存设置</span>
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <div class="cookie-banner" id="cookie-banner" hidden>
+      <p>
+        <span data-i18n="cookie.body"
+          >本地保存语言与网站偏好，方便你下次继续浏览。</span
+        >
+      </p>
+      <div class="button-row">
+        <button class="button outline" data-cookie-action="reject">
+          <span data-i18n="cookie.reject">仅保留必要项</span></button
+        ><button class="button dark" data-cookie-action="accept">
+          <span data-i18n="cookie.accept">接受全部</span></button
+        ><button class="button outline" data-cookie-settings>
+          <span data-i18n="cookie.customize">自定义</span>
+        </button>
       </div>
     </div>
-    <script>
-      const heroSlides = [...document.querySelectorAll(".hero-slide")];
-      let heroActive = 0;
-      if (
-        heroSlides.length > 1 &&
-        !matchMedia("(prefers-reduced-motion:reduce)").matches
-      ) {
-        setInterval(() => {
-          heroSlides[heroActive].classList.remove("active");
-          heroActive = (heroActive + 1) % heroSlides.length;
-          heroSlides[heroActive].classList.add("active");
-        }, 5600);
-      }
-      const menu = document.getElementById("menu"),
-        mobile = document.getElementById("mobileNav");
-      menu.onclick = () => mobile.classList.toggle("open");
-      mobile.onclick = () => mobile.classList.remove("open");
-      const iconMap = {
-        "feature-1.png": "ant-design:team-outlined",
-        "feature-2.png": "ant-design:box-plot-outlined",
-        "feature-3.png": "ant-design:file-text-outlined",
-        "feature-4.png": "ant-design:desktop-outlined",
-        "feature-5.png": "ant-design:setting-outlined",
-        "feature-6.png": "ant-design:bar-chart-outlined",
-      };
-      document.querySelectorAll('img[src^="assets/"]').forEach((image) => {
-        const file = image.getAttribute("src").split("/").pop();
-        const symbol = iconMap[file];
-        if (!symbol) return;
-        const icon = document.createElement("iconify-icon");
-        icon.setAttribute("class", "ui-icon");
-        icon.setAttribute("icon", symbol);
-        icon.setAttribute("aria-hidden", "true");
-        image.replaceWith(icon);
-      });
-      const theme = document.getElementById("theme"),
-        themeKey = "rental-os-theme",
-        icons = {
-          light: "ant-design:sun-outlined",
-          dark: "ant-design:moon-outlined",
-        };
-      let activeTheme =
-        document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-      function apply(p, persist = false) {
-        activeTheme = p;
-        document.documentElement.dataset.theme = p;
-        theme.querySelector("iconify-icon").setAttribute("icon", icons[p]);
-        if (persist) {
-          try {
-            localStorage.setItem(themeKey, p);
-          } catch (e) {}
-        }
-      }
-      apply(activeTheme);
-      theme.onclick = () => {
-        apply(activeTheme === "dark" ? "light" : "dark", true);
-      };
-
-      const translations = {
-        产品: "Product",
-        解决方案: "Solutions",
-        客户案例: "Customers",
-        资源中心: "Resources",
-        关于我们: "About",
-        行业方案: "Industry solutions",
-        平台能力: "Platform capabilities",
-        预约演示: "Book a Demo",
-        "Rental OS – 行业解决方案": "Rental OS – Industry Solutions",
-        面向: "Rental solutions for ",
-        多行业: "multiple industries",
-        的: "",
-        租赁解决方案: "on one platform",
-        "覆盖摄影设备、露营装备、车辆载具、工程设备等多元租赁场景，让不同品类共享一套高效、可扩展的经营底座。":
-          "Built for camera gear, outdoor equipment, vehicles and construction equipment—one efficient, extensible operating foundation for every rental category.",
-        查看行业方案: "Explore Solutions",
-        深耕租赁行业: "Built for rental",
-        灵活可扩展: "Flexible by design",
-        服务全球租赁企业: "Ready for global teams",
-        四大行业解决方案: "Solutions for four rental industries",
-        "深度理解行业需求，提供贴合业务场景的专业解决方案":
-          "Purpose-built workflows for the way each rental industry operates.",
-        查看更多行业方案: "View more solutions",
-        摄影设备租赁: "Camera & production rentals",
-        "从单机到影视设备，助力摄影器材租赁企业实现高效运营。":
-          "Run everything from single-camera rentals to complete production kits.",
-        设备序列号管理: "Serialized asset tracking",
-        套装与配件租赁: "Kits and accessories",
-        拍摄档期管理: "Availability scheduling",
-        设备维护与质检: "Maintenance and inspection",
-        露营装备租赁: "Outdoor equipment rentals",
-        "覆盖帐篷、睡袋、户外桌椅等品类，助力露营装备租赁规模增长。":
-          "Manage tents, sleeping gear, outdoor furniture and seasonal rental inventory.",
-        多品类套装管理: "Multi-item bundles",
-        季节性库存调度: "Seasonal inventory planning",
-        清洁维护流程: "Cleaning workflows",
-        门店配送与归还: "Delivery and returns",
-        车辆载具租赁: "Vehicle rentals",
-        "支持汽车、房车、摩托车、电动车等多种车辆租赁场景。":
-          "Support cars, RVs, motorcycles, electric vehicles and more.",
-        车辆档期与调度: "Fleet availability",
-        证照与资质管理: "License verification",
-        保险与风控控制: "Insurance and risk control",
-        里程与用车记录: "Mileage and usage history",
-        工程设备租赁: "Construction equipment rentals",
-        "服务建筑工程、基建施工等场景，助力设备租赁企业数字化管理。":
-          "Digitize equipment rental operations for construction and infrastructure projects.",
-        大型设备资产管理: "Heavy asset management",
-        工地项目租赁: "Project-based rentals",
-        检修与保养计划: "Service planning",
-        复杂计费规则: "Flexible billing rules",
-        按业务场景解决问题: "Solve every rental workflow",
-        "覆盖租赁全流程，解决企业经营中的关键问题":
-          "Connect the full rental lifecycle and remove operational friction.",
-        查看全部场景: "View all workflows",
-        多门店经营: "Multi-location operations",
-        "支持多门店、多仓库统一管理，实时掌握库存与业务数据，提升协同效率。":
-          "Manage multiple locations and warehouses in one view, with clearer team coordination.",
-        预约与可租日历: "Booking & availability",
-        "在线预约、可租日历、冲突提醒，提升预订效率，减少沟通成本。":
-          "Online booking, live availability and conflict alerts—less back-and-forth.",
-        配送与归还: "Delivery & return",
-        "灵活配置交付方式、配送范围与履约费用，提升交付效率。":
-          "Configure delivery methods, service areas and fees to keep fulfillment moving.",
-        会员营销与复购: "Membership & retention",
-        "会员体系、优惠券与积分工具，提升客户复购。":
-          "Use memberships, coupons and rewards to grow repeat business.",
-        押金与结算: "Deposits & settlement",
-        "押金管理、多种结算方式，让财务对账更轻松。":
-          "Handle deposits and settlement methods with cleaner reconciliation.",
-        小程序获客: "Mobile acquisition",
-        "预留品牌小程序与 App 接口，打通私域经营。":
-          "Connect branded mini-program and app experiences to your private traffic channels.",
-        平台能力共通底座: "One platform foundation",
-        "灵活、稳定、可扩展，支撑多行业租赁业务快速发展":
-          "Flexible, reliable and extensible capabilities for every rental category.",
-        多租户: "Multi-tenant",
-        "支持多品牌、多门店的集团化运营，统一管理业务。":
-          "Operate multiple brands and locations centrally, with one unified view.",
-        订单履约: "Order fulfillment",
-        "从下单、出库、配送到归还的完整管理，全程可追踪。":
-          "Manage the journey from booking to return, with every status traceable.",
-        规则引擎: "Rules engine",
-        "灵活配置计费、押金、逾时与业务流程，适配不同规则。":
-          "Configure pricing, deposits and overtime rules for different rental models.",
-        优惠体系: "Promotion engine",
-        "优惠券、满减、会员权益等营销工具。":
-          "Run coupons, threshold discounts and member benefits.",
-        数据分析: "Analytics",
-        "经营数据、设备利用率与多维度报表。":
-          "Understand revenue, asset utilization and operating performance.",
-        "API 集成": "API integrations",
-        "开放接口，快速对接电商、ERP 与财务系统。":
-          "Connect commerce, ERP and finance systems through open APIs.",
-        "客户正在这样使用 Rental OS": "How customers use Rental OS",
-        "来自不同行业的企业选择 Rental OS，实现业务增长":
-          "Rental businesses across industries use Rental OS to grow.",
-        "“Rental OS 帮助我们实现了多门店统一管理，设备周转率提升了 40%，运营效率显著提高。”":
-          "“Rental OS unified our multi-location operations and improved asset turnover by 40%.”",
-        某摄影器材连锁: "Camera Rental Group",
-        "全国 20+ 门店｜摄影设备租赁":
-          "20+ locations nationwide | Camera rentals",
-        "“在线预订和会员体系，让顾客下单更方便，客户复购率也明显提升。”":
-          "“Online booking and membership tools made ordering easier and lifted repeat business.”",
-        某露营装备品牌: "Outdoor Rental Brand",
-        "专注户外生活｜露营装备租赁": "Outdoor lifestyle | Equipment rentals",
-        "“设备管理更加规范，项目损耗降低，跨区域调度效率提升了 50%。”":
-          "“Standardized asset management reduced project loss and improved cross-region dispatch by 50%.”",
-        某工程设备服务商: "Equipment Service Provider",
-        "区域领先｜工程设备租赁": "Regional leader | Equipment rentals",
-        "不同行业，同一套高效租赁底座。":
-          "Different industries. One efficient rental platform.",
-        "立即咨询行业顾问，获取专属解决方案，让您的业务更进一步。":
-          "Talk to a rental industry specialist and get a solution designed for your operation.",
-        咨询行业顾问: "Talk to an Expert",
-        "让租赁更简单，让世界更高效。":
-          "Make rental simpler. Make the world more efficient.",
-        核心功能: "Core capabilities",
-        产品定位: "Product overview",
-        版本与定价: "Plans & pricing",
-        行业解决方案: "Industry solutions",
-        场景方案: "Workflow solutions",
-        底座能力: "Platform foundation",
-        客户故事: "Customer stories",
-        企业案例: "Case studies",
-        客户评价: "Customer reviews",
-        联系我们: "Contact us",
-        公司介绍: "Company",
-        帮助中心: "Help center",
-        "© 2026 Rental OS. 保留所有权利。":
-          "© 2026 Rental OS. All rights reserved.",
-        "隐私政策 服务条款 网站地图": "Privacy  Terms  Sitemap",
-      };
-
-      const languageKey = "rental-os-language";
-      const headerLanguageSwitch = document.getElementById(
-        "headerLanguageSwitch",
-      );
-      const headerLanguageCode = document.getElementById("headerLanguageCode");
-      const languagePicker = document.querySelector(".language-picker");
-      const languageTrigger = document.getElementById("languageTrigger");
-      const languageCurrent = document.getElementById("languageCurrent");
-      const languageMenu = document.getElementById("languageMenu");
-      const footerSocialButtons = document.querySelectorAll(
-        ".socials .social-button",
-      );
-      const qrModal = document.getElementById("qrModal");
-      const qrModalClose = document.getElementById("qrModalClose");
-      const qrModalPlatform = document.getElementById("qrModalPlatform");
-      const qrModalTitle = document.getElementById("qrModalTitle");
-      const qrModalImage = document.getElementById("qrModalImage");
-      const qrModalHint = document.getElementById("qrModalHint");
-      let activeQrPlatform = "wechat";
-      let activeLanguage = "zh";
-      const qrCopy = {
-        zh: {
-          wechat: {
-            platform: "微信",
-            title: "微信二维码",
-            hint: "使用微信扫描二维码",
-            alt: "微信二维码",
-          },
-          qq: {
-            platform: "QQ",
-            title: "QQ 二维码",
-            hint: "使用 QQ 扫描二维码",
-            alt: "QQ 二维码",
-          },
-        },
-        en: {
-          wechat: {
-            platform: "WeChat",
-            title: "WeChat QR code",
-            hint: "Scan this QR code with WeChat",
-            alt: "WeChat QR code",
-          },
-          qq: {
-            platform: "QQ",
-            title: "QQ QR code",
-            hint: "Scan this QR code with QQ",
-            alt: "QQ QR code",
-          },
-        },
-      };
-      function updateQrModalCopy() {
-        const copy = qrCopy[activeLanguage][activeQrPlatform];
-        qrModalPlatform.textContent = copy.platform;
-        qrModalTitle.textContent = copy.title;
-        qrModalHint.textContent = copy.hint;
-        qrModalImage.alt = copy.alt;
-        qrModalClose.setAttribute(
-          "aria-label",
-          activeLanguage === "en" ? "Close QR code" : "关闭二维码",
-        );
-      }
-      function openQrModal(platform) {
-        activeQrPlatform = platform === "qq" ? "qq" : "wechat";
-        qrModalImage.src = `assets/qrcode-${activeQrPlatform}.svg`;
-        updateQrModalCopy();
-        qrModal.hidden = false;
-        document.body.classList.add("qr-modal-open");
-        qrModalClose.focus();
-      }
-      function closeQrModal() {
-        qrModal.hidden = true;
-        document.body.classList.remove("qr-modal-open");
-      }
-      footerSocialButtons.forEach((button) => {
-        button.addEventListener("click", () => openQrModal(button.dataset.social));
-      });
-      qrModalClose.addEventListener("click", closeQrModal);
-      qrModal.addEventListener("click", (event) => {
-        if (event.target === qrModal || event.target.hasAttribute("data-qr-close")) {
-          closeQrModal();
-        }
-      });
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape" && !qrModal.hidden) closeQrModal();
-      });
-      const translatableNodes = [];
-      const walker = document.createTreeWalker(
-        document.body,
-        NodeFilter.SHOW_TEXT,
-        {
-          acceptNode(node) {
-            const value = node.nodeValue.replace(/\s+/g, " ").trim();
-            return value &&
-              Object.prototype.hasOwnProperty.call(translations, value)
-              ? NodeFilter.FILTER_ACCEPT
-              : NodeFilter.FILTER_REJECT;
-          },
-        },
-      );
-      while (walker.nextNode()) {
-        const node = walker.currentNode;
-        const zh = node.nodeValue.replace(/\s+/g, " ").trim();
-        translatableNodes.push({ node, zh, en: translations[zh] });
-      }
-      function setLanguage(language, persist = false) {
-        activeLanguage = language === "en" ? "en" : "zh";
-        const isEnglish = activeLanguage === "en";
-        translatableNodes.forEach(({ node, zh, en }) => {
-          node.nodeValue = isEnglish ? en : zh;
-        });
-        document.documentElement.lang = isEnglish ? "en" : "zh-CN";
-        document.title = isEnglish
-          ? "Rental OS | Rental solutions for multiple industries"
-          : "Rental OS｜面向多行业的租赁解决方案";
-        document.querySelector('meta[name="description"]').content = isEnglish
-          ? "Rental OS is an all-in-one SaaS platform for camera, outdoor, vehicle and construction equipment rental businesses."
-          : "Rental OS 面向摄影器材、露营装备、车辆载具和工程设备等租赁企业，提供资产、订单、定价、履约、会员与经营分析的一体化 SaaS 解决方案。";
-        theme.setAttribute(
-          "aria-label",
-          isEnglish ? "Switch color mode" : "切换颜色模式",
-        );
-        const socialGroup = document.querySelector(".socials");
-        socialGroup.setAttribute(
-          "aria-label",
-          isEnglish ? "Social contacts" : "社交联系方式",
-        );
-        footerSocialButtons[0].setAttribute(
-          "aria-label",
-          isEnglish ? "Open WeChat QR code" : "打开微信二维码",
-        );
-        footerSocialButtons[0].title = isEnglish
-          ? "Open WeChat QR code"
-          : "打开微信二维码";
-        footerSocialButtons[1].setAttribute(
-          "aria-label",
-          isEnglish ? "Open QQ QR code" : "打开 QQ 二维码",
-        );
-        footerSocialButtons[1].title = isEnglish
-          ? "Open QQ QR code"
-          : "打开 QQ 二维码";
-        updateQrModalCopy();
-        document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
-          const isExpert = link.closest(".cta");
-          const subject = isEnglish
-            ? isExpert
-              ? "Rental OS industry consultation"
-              : "Book a Rental OS demo"
-            : isExpert
-              ? "咨询 Rental OS 行业解决方案"
-              : "预约 Rental OS 演示";
-          link.href = `mailto:hello@rentalos.cn?subject=${encodeURIComponent(subject)}`;
-        });
-        const altTranslations = {
-          摄影设备租赁: "Camera and production rentals",
-          露营装备租赁: "Outdoor equipment rentals",
-          车辆载具租赁: "Vehicle rentals",
-          工程设备租赁: "Construction equipment rentals",
-          摄影器材租赁客户: "Camera rental customer",
-          露营装备租赁客户: "Outdoor equipment rental customer",
-          工程设备租赁客户: "Construction equipment rental customer",
-        };
-        document.querySelectorAll("img[alt]").forEach((image) => {
-          if (!image.dataset.zhAlt) image.dataset.zhAlt = image.alt;
-          image.alt =
-            isEnglish && altTranslations[image.dataset.zhAlt]
-              ? altTranslations[image.dataset.zhAlt]
-              : image.dataset.zhAlt;
-        });
-        languageCurrent.textContent = isEnglish ? "English" : "简体中文";
-        headerLanguageCode.textContent = isEnglish ? "EN" : "中";
-        headerLanguageSwitch.setAttribute(
-          "aria-label",
-          isEnglish ? "Switch language" : "切换语言",
-        );
-        headerLanguageSwitch.title = isEnglish ? "Switch language" : "切换语言";
-        languageTrigger.setAttribute(
-          "aria-label",
-          isEnglish ? "Choose language" : "选择语言",
-        );
-        languageMenu.setAttribute(
-          "aria-label",
-          isEnglish ? "Language options" : "语言选项",
-        );
-        languageMenu.querySelectorAll("[data-language]").forEach((button) => {
-          button.setAttribute(
-            "aria-selected",
-            String(button.dataset.language === language),
-          );
-        });
-        if (persist) {
-          try {
-            localStorage.setItem(languageKey, activeLanguage);
-          } catch (e) {}
-        }
-      }
-      languageMenu.querySelectorAll("[data-language]").forEach((button) => {
-        button.addEventListener("click", () => {
-          setLanguage(button.dataset.language, true);
-          languageMenu.hidden = true;
-          languageTrigger.setAttribute("aria-expanded", "false");
-        });
-      });
-      headerLanguageSwitch.addEventListener("click", () => {
-        setLanguage(activeLanguage === "en" ? "zh" : "en", true);
-      });
-      languageTrigger.addEventListener("click", () => {
-        const open = languageMenu.hidden;
-        languageMenu.hidden = !open;
-        languageTrigger.setAttribute("aria-expanded", String(open));
-      });
-      document.addEventListener("click", (event) => {
-        if (!languagePicker.contains(event.target)) {
-          languageMenu.hidden = true;
-          languageTrigger.setAttribute("aria-expanded", "false");
-        }
-      });
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          languageMenu.hidden = true;
-          languageTrigger.setAttribute("aria-expanded", "false");
-        }
-      });
-      const systemLanguage = () => {
-        const primaryLanguage = String(
-          navigator.languages?.[0] || navigator.language || "",
-        ).toLowerCase();
-        return primaryLanguage.startsWith("en")
-          ? "en"
-          : "zh";
-      };
-      let savedLanguage = new URLSearchParams(location.search).get("lang");
-      try {
-        savedLanguage =
-          savedLanguage || localStorage.getItem(languageKey) || systemLanguage();
-      } catch (e) {}
-      setLanguage(savedLanguage === "en" ? "en" : "zh");
-
-      const navSections = [
-        { id: "solutions", nav: "#solutions" },
-        { id: "scenarios", nav: "#solutions" },
-        { id: "foundation", nav: "#foundation" },
-        { id: "customers", nav: "#customers" },
-      ];
-      const siteHeader = document.getElementById("siteHeader");
-      const navLinks = document.querySelectorAll(".nav a, .mobile-nav a");
-      let scrollTicking = false;
-      function updateActiveNavigation() {
-        siteHeader.classList.toggle("is-scrolled", window.scrollY > 0);
-        const atBottom =
-          window.scrollY + window.innerHeight >=
-          document.documentElement.scrollHeight - 2;
-        const marker = atBottom
-          ? document.documentElement.scrollHeight
-          : window.scrollY + 120;
-        let current = null;
-        navSections.forEach((section) => {
-          const element = document.getElementById(section.id);
-          if (element && marker >= element.offsetTop) current = section.nav;
-        });
-        navLinks.forEach((link) => {
-          link.classList.toggle(
-            "active",
-            Boolean(current) && link.getAttribute("href") === current,
-          );
-        });
-        scrollTicking = false;
-      }
-      window.addEventListener(
-        "scroll",
-        () => {
-          if (!scrollTicking) {
-            requestAnimationFrame(updateActiveNavigation);
-            scrollTicking = true;
-          }
-        },
-        { passive: true },
-      );
-      window.addEventListener("resize", updateActiveNavigation);
-      updateActiveNavigation();
-    </script>
   </body>
 </html>
